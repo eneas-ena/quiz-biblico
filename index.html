@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0b1437">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Quiz Bíblico">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Quiz Bíblico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-1:#0b1437; --navy-2:#111c4e; --navy-3:#0a1030;
+  --gold:#e6c158; --gold-deep:#caa033; --gold-soft:#f3deA0;
+  --green:#2fa45c; --green-deep:#23823f;
+  --blue:#2d7ff9; --blue-deep:#1f5fd6;
+  --purple:#8b5cf6; --purple-deep:#6d3fe0;
+  --orange:#e0801a; --orange-deep:#c1690f;
+  --card:#fbfaf6; --ink:#1c2240; --muted:#7a809a;
+  --line:#e7e4d8;
+  --good:#2fa45c; --bad:#e0524d;
+  --shadow:0 14px 34px rgba(4,8,30,.45);
+  --serif:'Cinzel',serif; --read:'Cormorant Garamond',serif; --sans:'Barlow',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%}
+body{
+  font-family:var(--sans);
+  background:#05081a;
+  color:#fff; overflow:hidden;
+  display:flex; justify-content:center; align-items:stretch;
+}
+#app{
+  width:100%; max-width:440px; height:100dvh;
+  position:relative; display:flex; flex-direction:column; overflow:hidden;
+  background:
+    radial-gradient(900px 700px at 50% -10%, #1a2a66 0%, transparent 60%),
+    radial-gradient(700px 600px at 80% 110%, #12224f 0%, transparent 55%),
+    linear-gradient(180deg,var(--navy-1),var(--navy-3));
+  box-shadow:0 0 70px rgba(0,0,0,.5);
+}
+@media(min-width:480px){#app{border-left:1px solid rgba(255,255,255,.05);border-right:1px solid rgba(255,255,255,.05)}}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .28s ease,transform .28s ease;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.screen.active{opacity:1;pointer-events:auto;transform:none}
+.pad{padding:22px 20px 26px}
+.center{align-items:center;text-align:center}
+
+/* ---------- LOGO / TITLES ---------- */
+.crest{width:84px;height:84px;margin:6px auto 2px;display:block}
+.title-quiz{font-family:var(--serif);font-weight:900;letter-spacing:.06em;line-height:.92;font-size:46px;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+.title-bib{font-family:var(--serif);font-weight:700;letter-spacing:.16em;font-size:30px;color:var(--gold);text-shadow:0 3px 14px rgba(0,0,0,.4)}
+.eyebrow{font-family:var(--serif);font-weight:600;letter-spacing:.22em;font-size:12px;color:var(--gold-soft);opacity:.92;margin:14px 0 16px;position:relative;display:inline-block;padding:0 18px}
+.eyebrow::before,.eyebrow::after{content:"";position:absolute;top:50%;width:22px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));opacity:.7}
+.eyebrow::before{right:100%}.eyebrow::after{left:100%;transform:scaleX(-1)}
+
+/* ---------- LEVEL CARDS ---------- */
+.levels{display:grid;grid-template-columns:1fr;gap:14px;width:100%}
+.lvl{display:flex;width:100%;align-items:center;gap:14px;background:var(--card);border-radius:18px;padding:15px 16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:transform .14s ease,box-shadow .14s ease;position:relative}
+.lvl:active{transform:scale(.985)}
+.lvl.locked{opacity:.62;cursor:not-allowed}
+.lvl .ic{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.22)}
+.lvl .tx{flex:1;min-width:0;text-align:left}
+.lvl .tx h3{font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.04em;margin:0 0 3px;color:var(--ink)}
+.lvl .tx p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.25}
+.lvl .chev{color:var(--muted);font-size:22px;flex:0 0 auto}
+.lvl .lock{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px}
+.g-green{background:linear-gradient(160deg,var(--green),var(--green-deep))}
+.g-blue{background:linear-gradient(160deg,var(--blue),var(--blue-deep))}
+.g-purple{background:linear-gradient(160deg,var(--purple),var(--purple-deep))}
+.g-orange{background:linear-gradient(160deg,var(--orange),var(--orange-deep))}
+.tag-need{font-size:11px;color:var(--orange-deep);font-weight:700;margin-top:4px}
+.tag-prog{font-size:11px;color:var(--gold-soft);font-weight:600;margin-top:4px}
+
+/* ---------- TOP BAR (player chip) ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 0}
+.chip{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:6px 12px 6px 6px;border-radius:30px}
+.chip .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:17px;background:linear-gradient(160deg,var(--gold),var(--gold-deep))}
+.chip b{font-weight:600;font-size:13.5px}
+.chip small{display:block;font-size:11px;color:var(--gold-soft);font-weight:600;line-height:1}
+.linkbtn{background:none;border:none;color:var(--gold-soft);font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer;opacity:.85}
+
+/* ---------- BOTTOM NAV ---------- */
+.nav{display:flex;justify-content:space-around;align-items:center;padding:11px 8px calc(11px + env(safe-area-inset-bottom));background:rgba(8,13,40,.86);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.07)}
+.nav button{background:none;border:none;color:#aeb6d6;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10.5px;font-weight:600;letter-spacing:.04em;cursor:pointer;padding:4px 8px;border-radius:10px}
+.nav button.on{color:var(--gold)}
+.nav svg{width:21px;height:21px}
+
+/* ---------- QUIZ ---------- */
+.qhead{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 6px}
+.lives{display:flex;align-items:center;justify-content:center;gap:5px;padding:2px 0 4px}
+.lives .hrt{font-size:18px;line-height:1;transition:transform .18s,opacity .18s}
+.lives .hrt.off{opacity:.55;filter:grayscale(.3)}
+.lives .hrt.pop{transform:scale(1.5)}
+.lives-lbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;color:var(--gold-soft);margin-left:6px;opacity:.85}
+.qscore{display:inline-block;background:rgba(230,193,88,.14);border:1px solid rgba(230,193,88,.3);color:var(--gold-soft);font-weight:700;font-size:12px;padding:2px 8px;border-radius:20px;margin-right:6px}
+.levelprog{text-align:center;margin:2px auto 0;max-width:260px;font-size:10.5px;color:var(--gold-soft);font-weight:600;padding:0 14px;line-height:1.4}
+.lptrack{height:5px;background:rgba(255,255,255,.12);border-radius:4px;margin-top:3px;overflow:hidden}
+.lpfill{height:100%;background:var(--gold);border-radius:4px;transition:width .3s}
+.qhead .back{background:none;border:none;color:#cdd4ef;font-size:24px;cursor:pointer;width:34px}
+.qhead .lvlname{font-family:var(--serif);letter-spacing:.16em;font-size:12.5px;font-weight:600;color:#8fb4ff;text-transform:uppercase}
+.qhead .count{font-weight:700;font-size:15px;color:#cdd4ef}
+.qhead .count b{color:#fff}
+.timerwrap{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px 0 18px}
+.ring{position:relative;width:78px;height:78px}
+.ring svg{transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:700}
+.ring .num b{font-size:24px;line-height:1;display:block;font-family:var(--serif)}
+.ring .num span{font-size:10px;letter-spacing:.18em;color:#9fb0e0}
+.timerlabel{display:flex;align-items:center;gap:7px;color:#9fb0e0;font-size:12px;font-weight:600;letter-spacing:.04em}
+.qcard{background:var(--card);color:var(--ink);margin:0 18px;border-radius:22px;padding:24px 20px 22px;box-shadow:var(--shadow)}
+.quote{font-family:var(--read);font-size:48px;line-height:.4;color:var(--gold);height:18px}
+.qtext{font-family:var(--read);font-weight:700;font-size:25px;line-height:1.18;margin:0 0 8px;color:#1a2046}
+.qref{font-size:11px;letter-spacing:.14em;font-weight:700;color:#9aa0bb;text-transform:uppercase;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);border-radius:16px;padding:13px 14px;cursor:pointer;background:#fff;transition:all .14s ease;font-size:16px;color:#2a3050;text-align:left;font-family:var(--sans);width:100%}
+.opt .letter{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:0 0 auto}
+.opt:active{transform:scale(.99)}
+.opt.sel{background:#eef4ff;border-color:var(--blue)}
+.opt.correct{background:#e9f8ee;border-color:var(--good)}
+.opt.correct .letter{background:var(--good)}
+.opt.wrong{background:#fdecea;border-color:var(--bad)}
+.opt.wrong .letter{background:var(--bad)}
+.opt.dim{opacity:.45}
+.opt:disabled{cursor:default}
+.lifebar{display:flex;justify-content:space-around;margin:16px 18px 22px;background:rgba(8,13,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:12px 8px}
+.life{background:none;border:none;color:#cfd6f2;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.03em;cursor:pointer}
+.life svg{width:24px;height:24px;color:var(--gold)}
+.life:disabled{opacity:.32;cursor:default}
+.life .badge{font-size:9px;background:rgba(230,193,88,.18);color:var(--gold);border-radius:8px;padding:0 6px;line-height:14px;margin-top:1px}
+
+/* ---------- RESULTS ---------- */
+.res{background:
+  radial-gradient(700px 420px at 50% -5%, #2b6f3e 0%, transparent 62%),
+  linear-gradient(180deg,#0f3522,#0a1030 70%)}
+.confetti{position:absolute;top:0;left:0;width:100%;height:240px;pointer-events:none;overflow:hidden}
+.conf{position:absolute;width:8px;height:13px;opacity:0;border-radius:1px;animation:fall linear forwards}
+@keyframes fall{0%{opacity:0;transform:translateY(-30px) rotate(0)}10%{opacity:1}100%{opacity:.9;transform:translateY(260px) rotate(540deg)}}
+.crown{font-size:40px;margin-top:8px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+.parabens{font-family:var(--serif);font-weight:700;font-size:38px;letter-spacing:.04em;color:var(--gold);text-shadow:0 3px 16px rgba(0,0,0,.4);margin:2px 0 2px}
+.subdone{font-family:var(--read);font-size:18px;color:#dfe7ff;margin-bottom:14px}
+.shield{width:170px;height:188px;margin:0 auto 6px;position:relative;display:grid;place-items:center;text-align:center}
+.shield .lab{font-family:var(--serif);letter-spacing:.14em;font-size:12px;color:#0c3a1d;font-weight:700;position:absolute;top:42px}
+.shield .small{font-size:10px;letter-spacing:.1em;color:#0c3a1d;position:absolute;top:78px;font-weight:700;opacity:.85}
+.shield .pts{font-family:var(--serif);font-weight:900;font-size:46px;color:#0c3a1d;position:absolute;top:88px;text-shadow:0 1px 0 rgba(255,255,255,.3)}
+.shield .ptlab{font-size:10px;letter-spacing:.18em;color:#0c3a1d;position:absolute;top:138px;font-weight:700}
+.stats3{display:flex;justify-content:space-around;margin:14px 22px 0;background:rgba(8,16,12,.45);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px 6px}
+.st{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
+.st .ico{width:26px;height:26px}
+.st b{font-size:20px;font-family:var(--serif)}
+.st small{font-size:10px;letter-spacing:.1em;color:#9fb0d0;text-transform:uppercase}
+.st.sep{border-left:1px solid rgba(255,255,255,.1);border-right:1px solid rgba(255,255,255,.1)}
+.progblock{margin:18px 22px 0}
+.progtitle{font-size:10.5px;letter-spacing:.18em;color:#9fb0d0;text-align:center;font-weight:700;margin-bottom:12px}
+.track{position:relative;height:5px;background:rgba(255,255,255,.13);border-radius:4px;margin:0 18px}
+.track .fill{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:4px;transition:width .8s ease}
+.dots{display:flex;justify-content:space-between;margin:-13px 0 0;position:relative}
+.dotwrap{display:flex;flex-direction:column;align-items:center;gap:7px;width:25%}
+.dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:#26305c;border:2px solid #0a1030;z-index:1}
+.dot.on{box-shadow:0 0 0 3px rgba(230,193,88,.3)}
+.dotwrap small{font-size:8.5px;letter-spacing:.06em;color:#8a93b8;font-weight:700}
+.dotwrap b{font-size:12px;font-family:var(--serif)}
+.dotwrap .nodata{color:#5b6398}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:30px;font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.04em;padding:15px;cursor:pointer;width:100%}
+.btn-green{background:linear-gradient(180deg,#39b865,#2a9450);color:#fff;box-shadow:0 8px 20px rgba(33,130,63,.45)}
+.btn-dark{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#dfe5ff}
+.btn:active{transform:scale(.99)}
+.actions{margin:20px 22px 26px;display:flex;flex-direction:column;gap:11px}
+
+/* ---------- LOGIN ---------- */
+.field{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 16px;color:#fff;font-family:var(--sans);font-size:16px;margin-top:10px}
+.field::placeholder{color:#9aa3c8}
+.field:focus{outline:none;border-color:var(--gold)}
+.avgrid{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:14px 0 4px}
+.avbtn{width:46px;height:46px;border-radius:50%;border:2px solid transparent;background:rgba(255,255,255,.08);font-size:23px;cursor:pointer;display:grid;place-items:center}
+.avbtn.on{border-color:var(--gold);background:rgba(230,193,88,.18)}
+.profiles{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:8px}
+.pf{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:12px 14px;cursor:pointer;width:100%;color:#fff;font-family:var(--sans);text-align:left}
+.pf .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:linear-gradient(160deg,var(--gold),var(--gold-deep))}
+.pf b{font-size:16px;display:block}.pf small{font-size:12px;color:#9fb0d0}
+.pf .x{margin-left:auto;color:#7a83a8;font-size:13px;background:none;border:none}
+
+/* ---------- GENERIC LIST CARDS (ranking/stats/conquistas/config) ---------- */
+.h2{font-family:var(--serif);font-weight:700;letter-spacing:.08em;font-size:22px;color:var(--gold);text-align:center;margin:4px 0 4px}
+.sub{font-size:13px;color:#9fb0d0;text-align:center;margin-bottom:18px}
+.row{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:12px 14px;margin-bottom:10px}
+.row .pos{font-family:var(--serif);font-weight:700;font-size:17px;width:26px;text-align:center;color:var(--gold)}
+.row .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:19px;background:linear-gradient(160deg,var(--gold),var(--gold-deep))}
+.row .nm{flex:1}.row .nm b{font-size:15px}.row .nm small{font-size:11.5px;color:#9fb0d0;display:block}
+.row .sc{font-family:var(--serif);font-weight:700;color:var(--gold-soft)}
+.ach{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:12px 14px;margin-bottom:10px}
+.ach.locked{opacity:.42}
+.ach .em{font-size:26px;width:40px;text-align:center}
+.ach b{font-size:14.5px}.ach small{font-size:12px;color:#9fb0d0;display:block}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:12px}
+.statbox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;text-align:center}
+.statbox b{font-family:var(--serif);font-size:26px;color:var(--gold);display:block}
+.statbox small{font-size:11px;color:#9fb0d0;letter-spacing:.06em}
+.cfg{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:14px 16px;margin-bottom:10px;font-size:14.5px}
+.toggle{width:46px;height:26px;border-radius:20px;background:#39406b;position:relative;cursor:pointer;transition:.2s;flex:0 0 auto}
+.toggle.on{background:var(--green)}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.toggle.on::after{left:23px}
+.empty{text-align:center;color:#8a93b8;font-size:13.5px;padding:30px 10px;line-height:1.5}
+.flash{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(15,22,55,.95);border:1px solid rgba(230,193,88,.4);color:#fff;padding:11px 18px;border-radius:30px;font-size:13.5px;font-weight:600;opacity:0;transition:.25s;z-index:50;pointer-events:none}
+.flash.show{opacity:1}
+.small-note{font-size:11.5px;color:#8a93b8;text-align:center;margin-top:14px;line-height:1.5}
+.field.pin{text-align:center;letter-spacing:10px;font-size:22px;max-width:200px;margin:8px auto 0;display:block}
+.adminrow{align-items:center}
+.adminacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.mini{font-size:11px;padding:6px 10px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#cdd6f4;cursor:pointer;font-family:inherit;font-weight:600}
+.mini.del{border-color:rgba(229,90,90,.45);color:#ffb4b4}
+.timeopts{display:flex;gap:8px;flex-wrap:wrap}
+.timeopt.on{background:rgba(57,184,101,.18);border-color:rgba(57,184,101,.5);color:#bff3d0}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="flash" id="flash"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ============================================================
+   QUIZ BÍBLICO — app de família (Igreja Vidas)
+   v1: roda 100% offline. Os dados ficam salvos neste aparelho.
+   Próximo passo: ligar Supabase para login + ranking na nuvem.
+   ============================================================ */
+
+/* ============================================================
+   CONFIG SUPABASE — COLE SEUS DADOS AQUI (passo 3 do tutorial)
+   ============================================================ */
+const SUPABASE_URL = "COLE_AQUI_A_PROJECT_URL";       // ex.: https://xxxxxxxx.supabase.co
+const SUPABASE_KEY = "COLE_AQUI_A_PUBLISHABLE_KEY";   // começa com sb_publishable_
+let   ADMIN_PIN    = "1234";                          // <<< TROQUE pela senha do administrador (só você)
+
+/* ---- armazenamento local (cache offline, com fallback em memória) ---- */
+const mem={};
+const store={
+  get(k){try{return localStorage.getItem(k)}catch(e){return k in mem?mem[k]:null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},
+};
+
+/* ---- cliente Supabase (nuvem) ---- */
+const _URL = SUPABASE_URL.trim().replace(/\s+/g,'').replace(/\/rest\/v1.*$/i,'').replace(/\/+$/,'');  // remove barra final e /rest/v1 colado por engano
+const _KEY = SUPABASE_KEY.trim();
+const NUVEM_ON = /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(_URL) && _KEY.length>20 && !!(window.supabase);
+const sb = NUVEM_ON ? window.supabase.createClient(_URL, _KEY) : null;
+
+/* ---- estado em memória ---- */
+let data={profiles:[],lastId:null};
+function salvarCacheLocal(){store.set('qb_data',JSON.stringify(data));}
+function persist(){salvarCacheLocal();if(current)salvarPontos(current);}
+
+/* ---- PIN guardado como "impressão digital" (hash), nunca em texto puro ---- */
+async function hashPin(nome,pin){
+  const txt='quizbiblico|'+(nome||'').toLowerCase().trim()+'|'+pin;
+  try{
+    if(window.crypto&&crypto.subtle){
+      const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(txt));
+      return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+    }
+  }catch(e){}
+  // contexto não seguro (ex.: arquivo aberto direto do disco): hash simples de reserva
+  let h=0;for(let i=0;i<txt.length;i++){h=(h*31+txt.charCodeAt(i))>>>0;}
+  return 'f'+h.toString(16);
+}
+
+/* ---- conversão nuvem <-> local ---- */
+function rowToProfile(r){return {id:r.id,name:r.nome,avatar:r.avatar,total:r.total||0,perLevel:r.per_level||{},peak:r.peak||0,pin_hash:r.pin_hash,history:[]};}
+
+/* ---- camada de dados (nuvem com cache local) ---- */
+async function carregarJogadores(){
+  if(sb){
+    try{
+      const res=await sb.from('jogadores').select('*').order('total',{ascending:false});
+      if(res.error)throw res.error;
+      data.profiles=(res.data||[]).map(rowToProfile);
+      try{data.lastId=(JSON.parse(store.get('qb_data')||'{}').lastId)||null}catch(e){}
+      salvarCacheLocal();return;
+    }catch(e){console.warn('Nuvem indisponível, usando cache local:',e.message);}
+  }
+  try{const d=JSON.parse(store.get('qb_data'));if(d&&d.profiles)data=d;}catch(e){}
+  if(!data.profiles)data.profiles=[];
+}
+async function criarJogador(nome,avatar,pin){
+  const pin_hash=await hashPin(nome,pin);
+  if(sb){
+    const res=await sb.from('jogadores').insert({nome,avatar,pin_hash,total:0,per_level:{},peak:0}).select().single();
+    if(res.error)throw res.error;
+    const p=rowToProfile(res.data);data.profiles.push(p);salvarCacheLocal();return p;
+  }
+  const p={id:'p'+Date.now(),name:nome,avatar,total:0,perLevel:{},peak:0,pin_hash,history:[]};
+  data.profiles.push(p);salvarCacheLocal();return p;
+}
+async function removerJogador(id){
+  if(sb){const res=await sb.from('jogadores').delete().eq('id',id);if(res.error)throw res.error;}
+  data.profiles=data.profiles.filter(p=>p.id!==id);salvarCacheLocal();
+}
+async function salvarPontos(p){
+  salvarCacheLocal();
+  if(sb){try{await sb.from('jogadores').update({total:p.total,per_level:p.perLevel,peak:p.peak}).eq('id',p.id);}
+  catch(e){console.warn('Não consegui salvar na nuvem agora (mantido no aparelho):',e.message);}}
+}
+async function definirPin(p,novoPin){
+  const pin_hash=await hashPin(p.name,novoPin);
+  if(sb){const res=await sb.from('jogadores').update({pin_hash}).eq('id',p.id);if(res.error)throw res.error;}
+  p.pin_hash=pin_hash;salvarCacheLocal();
+}
+
+/* ---- níveis ---- */
+const LEVELS=[
+  {key:'iniciante',  nome:'INICIANTE',  desc:'Perguntas mais fáceis para começar',           cls:'g-green',  cor:'var(--green)',  emoji:'🌱', meta:20},
+  {key:'medio',      nome:'MÉDIO',      desc:'Desafios com nível moderado',                   cls:'g-blue',   cor:'var(--blue)',   emoji:'📖', meta:30},
+  {key:'intermediario',nome:'INTERMEDIÁRIO',desc:'Perguntas mais desafiadoras para testar você',cls:'g-purple', cor:'var(--purple)', emoji:'👑', meta:40},
+  {key:'expert',     nome:'EXPERT',     desc:'Apenas para os verdadeiros conhecedores da Palavra',cls:'g-orange',cor:'var(--orange)',emoji:'🛡️', meta:50},
+];
+const lvlByKey=k=>LEVELS.find(l=>l.key===k);
+
+/* ---- regras de pontuação e progressão ----
+   total    = soma dos pontos acumulados por nível (perde-se ao estourar erros);
+   _ac[key] = respostas certas ACUMULADAS EM CADA NÍVEL (progressão; nunca se perde);
+   meta     = acertos necessários NAQUELE nível para liberar o próximo (no Expert, para vencer);
+   peak     = maior total de pontos já alcançado (referência). */
+function recomputeTotal(p){
+  p.total=LEVELS.reduce((s,L)=>s+(p.perLevel[L.key]||0),0);
+  if(p.total>(p.peak||0))p.peak=p.total;
+  return p.total;
+}
+function getAc(p,key){return (p.perLevel&&p.perLevel._ac&&p.perLevel._ac[key])||0;}
+function addAc(p,key,n){if(!p.perLevel)p.perLevel={};if(!p.perLevel._ac)p.perLevel._ac={};const meta=(lvlByKey(key)||{}).meta||Infinity;p.perLevel._ac[key]=Math.min(meta,getAc(p,key)+(n||0));}
+function totalAcertos(p){return LEVELS.reduce((s,L)=>s+getAc(p,L.key),0);}
+function levelUnlocked(p,l){const i=LEVELS.indexOf(l);if(i<=0)return true;const prev=LEVELS[i-1];return getAc(p,prev.key)>=prev.meta;}
+function venceu(p){const last=LEVELS[LEVELS.length-1];return getAc(p,last.key)>=last.meta;}
+function normalizeProfiles(){
+  data.profiles.forEach(p=>{
+    if(!p.perLevel)p.perLevel={};
+    if(!p.history)p.history=[];
+    if(p.peak==null)p.peak=p.total||0;
+    if(!p.perLevel._ac){p.perLevel._ac={};(p.history||[]).forEach(x=>{if(x.key)p.perLevel._ac[x.key]=(p.perLevel._ac[x.key]||0)+(x.acertos||0)});}
+    LEVELS.forEach(L=>{if(p.perLevel._ac[L.key]>L.meta)p.perLevel._ac[L.key]=L.meta;});  // trava cada nível na sua meta
+    recomputeTotal(p);
+  });
+}
+
+/* ---- banco de perguntas ----
+   correta = índice (0..3). Para adicionar, basta copiar o modelo. */
+const QUESTIONS={
+iniciante:[
+ {q:"Quem foi o primeiro homem criado por Deus?",ref:"Gênesis 2:7",o:["Caim","Adão","Abel","Sete"],c:1,dica:"Seu nome significa 'homem' e foi formado do pó da terra."},
+ {q:"Quem foi engolido por um grande peixe?",ref:"Jonas 1:17",o:["Pedro","Elias","Jonas","Davi"],c:2,dica:"Fugia de uma missão na cidade de Nínive."},
+ {q:"Em qual cidade Jesus nasceu?",ref:"Mateus 2:1",o:["Nazaré","Jerusalém","Belém","Cafarnaum"],c:2,dica:"A 'cidade de Davi', conforme a profecia."},
+ {q:"Quantos discípulos Jesus escolheu?",ref:"Mateus 10:1",o:["7","10","12","70"],c:2,dica:"Mesmo número das tribos de Israel."},
+ {q:"Quem matou o gigante Golias?",ref:"1 Samuel 17:50",o:["Saul","Davi","Jônatas","Sansão"],c:1,dica:"Usou apenas uma funda e uma pedra."},
+ {q:"Qual era a profissão de Pedro antes de seguir Jesus?",ref:"Mateus 4:18",o:["Carpinteiro","Pescador","Cobrador","Pastor"],c:1,dica:"Trabalhava com redes no mar da Galileia."},
+ {q:"Quem traiu Jesus por trinta moedas de prata?",ref:"Mateus 26:15",o:["Pedro","Tomé","Judas","Tiago"],c:2,dica:"Era o discípulo que cuidava da bolsa."},
+ {q:"Qual mar Moisés dividiu para o povo atravessar?",ref:"Êxodo 14:21",o:["Mar Morto","Mar da Galileia","Mar Vermelho","Mar Mediterrâneo"],c:2,dica:"O Egito ficou para trás depois dessa travessia."},
+ {q:"Qual é o primeiro livro da Bíblia?",ref:"",o:["Êxodo","Salmos","Gênesis","João"],c:2,dica:"Significa 'princípio' ou 'origem'."},
+ {q:"Quem foi lançado na cova dos leões e saiu ileso?",ref:"Daniel 6:22",o:["José","Daniel","Sadraque","Jeremias"],c:1,dica:"Orava três vezes ao dia diante da janela."},
+ {q:"Quem recebeu os Dez Mandamentos no monte Sinai?",ref:"Êxodo 20:1",o:["Josué","Arão","Moisés","Abraão"],c:2,dica:"Subiu o monte e desceu com duas tábuas de pedra."},
+ {q:"Qual animal falou com o profeta Balaão?",ref:"Números 22:28",o:["Um corvo","Uma jumenta","Uma ovelha","Um leão"],c:1,dica:"Era o próprio animal que ele montava."},
+ {q:"Quantos dias e noites choveu durante o dilúvio?",ref:"Gênesis 7:12",o:["7","12","40","100"],c:2,dica:"O mesmo número de dias que Jesus jejuou no deserto."},
+ {q:"Quem construiu a arca conforme as instruções de Deus?",ref:"Gênesis 6:14",o:["Moisés","Noé","Abraão","José"],c:1,dica:"Reuniu os animais de dois em dois."},
+ {q:"Qual foi a primeira mulher criada por Deus?",ref:"Gênesis 2:22",o:["Sara","Eva","Maria","Raquel"],c:1,dica:"Formada a partir da costela do homem."},
+ {q:"Em quantos dias Deus criou o mundo, descansando no sétimo?",ref:"Gênesis 1",o:["3","6","7","12"],c:1,dica:"Ele descansou no sétimo dia."},
+ {q:"Em que dia Deus descansou da obra da criação?",ref:"Gênesis 2:2",o:["Primeiro","Quarto","Sexto","Sétimo"],c:3,dica:"Esse dia foi abençoado e santificado."},
+ {q:"De qual árvore Adão e Eva foram proibidos de comer?",ref:"Gênesis 2:17",o:["Da videira","Da figueira","Do conhecimento do bem e do mal","Da oliveira"],c:2,dica:"Comer dela trouxe a queda."},
+ {q:"Quem foi o irmão que Caim matou?",ref:"Gênesis 4:8",o:["Sete","Abel","Enoque","Lameque"],c:1,dica:"Foi o primeiro homem a morrer na Bíblia."},
+ {q:"Qual era o nome do jardim onde Adão e Eva viviam?",ref:"Gênesis 2:8",o:["Getsêmani","Éden","Canaã","Siló"],c:1,dica:"Significa 'delícia' ou 'prazer'."},
+ {q:"Que sinal Deus deu de que não destruiria mais a terra com dilúvio?",ref:"Gênesis 9:13",o:["A estrela","O arco-íris","A pomba","O trovão"],c:1,dica:"Aparece nas nuvens depois da chuva."},
+ {q:"Qual ave voltou à arca com uma folha de oliveira no bico?",ref:"Gênesis 8:11",o:["O corvo","A águia","A pomba","A andorinha"],c:2,dica:"Sinal de que as águas tinham baixado."},
+ {q:"Qual profeta foi alimentado por corvos junto ao ribeiro?",ref:"1 Reis 17:6",o:["Eliseu","Elias","Isaías","Jonas"],c:1,dica:"Depois multiplicou o azeite e a farinha de uma viúva."},
+ {q:"Quem interpretou os sonhos do faraó no Egito?",ref:"Gênesis 41:15",o:["Daniel","José","Moisés","Arão"],c:1,dica:"Antes tinha sido vendido pelos irmãos."},
+ {q:"Qual alimento caía do céu para o povo no deserto?",ref:"Êxodo 16:15",o:["Trigo","Maná","Mel","Cevada"],c:1,dica:"Aparecia toda manhã, menos no sábado."},
+ {q:"Qual homem forte perdeu a força quando cortaram seu cabelo?",ref:"Juízes 16:19",o:["Sansão","Gideão","Saul","Baraque"],c:0,dica:"Foi traído por Dalila."},
+ {q:"Qual instrumento Davi tocava para acalmar o rei Saul?",ref:"1 Samuel 16:23",o:["Trombeta","Flauta","Harpa","Tambor"],c:2,dica:"O espírito mau se retirava quando ele tocava."},
+ {q:"Quantas tábuas de pedra Moisés recebeu com os mandamentos?",ref:"Êxodo 31:18",o:["1","2","5","10"],c:1,dica:"Foram escritas pelo dedo de Deus."},
+ {q:"Em que lugar humilde Jesus foi colocado ao nascer?",ref:"Lucas 2:7",o:["Num berço de ouro","Numa manjedoura","Num palácio","Numa caverna"],c:1,dica:"Não havia lugar na hospedaria."},
+ {q:"Quem eram os pais terrenos de Jesus?",ref:"Lucas 2:16",o:["Zacarias e Isabel","Maria e José","Joaquim e Ana","Eli e Ana"],c:1,dica:"José era carpinteiro em Nazaré."},
+ {q:"O que guiou os magos do oriente até Jesus?",ref:"Mateus 2:9",o:["Um anjo","Uma estrela","Uma nuvem","Uma voz"],c:1,dica:"Parou sobre o lugar onde estava o menino."},
+ {q:"Em qual rio Jesus foi batizado?",ref:"Mateus 3:13",o:["Nilo","Eufrates","Jordão","Tigre"],c:2,dica:"João Batista o batizou ali."},
+ {q:"Qual foi o primeiro milagre de Jesus?",ref:"João 2:11",o:["Curar um cego","Transformar água em vinho","Andar sobre as águas","Multiplicar pães"],c:1,dica:"Aconteceu numa festa de casamento."},
+ {q:"Quantos pães Jesus usou para alimentar cinco mil pessoas?",ref:"Mateus 14:17",o:["2","5","7","12"],c:1,dica:"Também havia dois peixes."},
+ {q:"Sobre o que Jesus andou diante dos discípulos no mar?",ref:"Mateus 14:25",o:["Sobre um barco","Sobre as águas","Sobre as pedras","Sobre a areia"],c:1,dica:"Pedro tentou o mesmo, mas começou a afundar."},
+ {q:"Qual amigo de Jesus foi ressuscitado depois de quatro dias morto?",ref:"João 11:43",o:["Lázaro","Estêvão","Zaqueu","Bartimeu"],c:0,dica:"Era irmão de Marta e Maria."},
+ {q:"Em que dia da semana Jesus ressuscitou?",ref:"Marcos 16:9",o:["Sábado","Domingo","Sexta","Quinta"],c:1,dica:"O primeiro dia da semana."},
+ {q:"Em que lugar Jesus foi crucificado?",ref:"João 19:17",o:["Getsêmani","Gólgota","Betânia","Siloé"],c:1,dica:"Significa 'lugar da caveira'."},
+ {q:"Quantos dias Jesus ficou no deserto sendo tentado?",ref:"Mateus 4:2",o:["7","21","40","50"],c:2,dica:"Jejuou durante todo esse tempo."},
+ {q:"Qual apóstolo duvidou da ressurreição até tocar nas marcas de Jesus?",ref:"João 20:25",o:["Pedro","Tomé","Filipe","André"],c:1,dica:"Ficou conhecido como 'o incrédulo'."},
+ {q:"Que oração Jesus ensinou aos discípulos?",ref:"Mateus 6:9",o:["A oração de Jabez","O Pai Nosso","O Credo","O Salmo 23"],c:1,dica:"Começa com 'Pai nosso que estás nos céus'."},
+ {q:"Quantos mandamentos Deus deu a Moisés nas tábuas?",ref:"Êxodo 34:28",o:["5","7","10","12"],c:2,dica:"Resumem a Lei de Deus."},
+ {q:"Qual salmo começa com 'O Senhor é o meu pastor'?",ref:"Salmos 23:1",o:["Salmo 1","Salmo 23","Salmo 91","Salmo 119"],c:1,dica:"Fala de águas tranquilas e verdes pastos."},
+ {q:"Quantos jovens foram lançados na fornalha e não se queimaram?",ref:"Daniel 3:23",o:["1","2","3","4"],c:2,dica:"Sadraque, Mesaque e Abede-Nego."},
+ {q:"Quem foi chamado de pai de muitas nações e amigo de Deus?",ref:"Tiago 2:23",o:["Noé","Abraão","Davi","Moisés"],c:1,dica:"Saiu da terra de Ur por obediência."},
+ {q:"Qual era o nome da esposa de Abraão?",ref:"Gênesis 17:15",o:["Rebeca","Sara","Raquel","Lia"],c:1,dica:"Deu à luz Isaque na velhice."},
+ {q:"Qual filho Deus pediu a Abraão em sacrifício, mas poupou?",ref:"Gênesis 22:2",o:["Ismael","Isaque","Jacó","Esaú"],c:1,dica:"Um carneiro foi oferecido em seu lugar."},
+ {q:"Quem teve o nome mudado para Israel após lutar com um anjo?",ref:"Gênesis 32:28",o:["Esaú","Labão","Jacó","José"],c:2,dica:"Tornou-se pai das doze tribos."},
+ {q:"Que presente colorido Jacó deu a José?",ref:"Gênesis 37:3",o:["Um manto azul","Uma túnica de muitas cores","Uma coroa","Um anel"],c:1,dica:"Despertou a inveja dos irmãos."},
+ {q:"Qual festa lembra a libertação de Israel do Egito?",ref:"Êxodo 12:14",o:["Pentecostes","Páscoa","Tabernáculos","Purim"],c:1,dica:"Um cordeiro era sacrificado nessa noite."},
+ {q:"Para qual cidade Jonas deveria pregar?",ref:"Jonas 1:2",o:["Babilônia","Nínive","Tarso","Jericó"],c:1,dica:"Ele tentou fugir para Társis."},
+ {q:"Quem é chamado de 'Cordeiro de Deus' que tira o pecado do mundo?",ref:"João 1:29",o:["João Batista","Jesus","Pedro","Moisés"],c:1,dica:"João Batista o apresentou assim."},
+ {q:"Qual é o último livro da Bíblia?",ref:"",o:["Malaquias","Judas","Apocalipse","Atos"],c:2,dica:"Foi escrito pelo apóstolo João."},
+ {q:"Quem subiu numa árvore para conseguir ver Jesus passar?",ref:"Lucas 19:4",o:["Bartimeu","Zaqueu","Nicodemos","Lázaro"],c:1,dica:"Era um cobrador de impostos de baixa estatura."},
+ {q:"Quem lavou os pés dos discípulos na última ceia?",ref:"João 13:5",o:["Pedro","João","Jesus","Judas"],c:2,dica:"Deu o exemplo de servir uns aos outros."},
+ {q:"Quem deu nome a todos os animais no princípio?",ref:"Gênesis 2:19",o:["Noé","Adão","Eva","Deus"],c:1,dica:"Deus os trouxe a ele para ver como os chamaria."},
+ {q:"Quem confessou: 'Tu és o Cristo, o Filho do Deus vivo'?",ref:"Mateus 16:16",o:["Tiago","Pedro","João","André"],c:1,dica:"Jesus o chamou de bem-aventurado."},
+ {q:"Quem desceu sobre os discípulos no dia de Pentecostes?",ref:"Atos 2:4",o:["Um anjo","O Espírito Santo","Elias","Moisés"],c:1,dica:"Eles começaram a falar em outras línguas."},
+ {q:"O que apareceu sobre os discípulos no Pentecostes?",ref:"Atos 2:3",o:["Nuvens","Línguas de fogo","Estrelas","Pombas"],c:1,dica:"Repartiam-se sobre cada um deles."},
+ {q:"Qual juíza liderou Israel junto com Baraque?",ref:"Juízes 4:4",o:["Ester","Débora","Rute","Ana"],c:1,dica:"Era profetisa e julgava sob uma palmeira."},
+ {q:"Quem disse 'o teu povo será o meu povo e o teu Deus será o meu Deus'?",ref:"Rute 1:16",o:["Ester","Rute","Noemi","Ana"],c:1,dica:"Era uma moabita fiel à sua sogra."},
+ {q:"Qual menino servia no templo e ouviu Deus chamá-lo de noite?",ref:"1 Samuel 3:10",o:["Davi","Samuel","Josias","Daniel"],c:1,dica:"Respondeu: 'Fala, que o teu servo ouve.'"},
+ {q:"Quem ungiu Davi como rei de Israel?",ref:"1 Samuel 16:13",o:["Eli","Natã","Samuel","Arão"],c:2,dica:"O mesmo que serviu no templo desde menino."},
+ {q:"Quem foi o filho sábio de Davi que se tornou rei?",ref:"1 Reis 2:12",o:["Absalão","Salomão","Adonias","Roboão"],c:1,dica:"Pediu a Deus sabedoria para governar."},
+ {q:"Quem construiu o primeiro templo em Jerusalém?",ref:"1 Reis 6:14",o:["Davi","Salomão","Neemias","Esdras"],c:1,dica:"Levou sete anos para terminar a obra."},
+ {q:"Quantos evangelhos há no Novo Testamento?",ref:"",o:["3","4","5","7"],c:1,dica:"Mateus, Marcos, Lucas e João."},
+ {q:"Qual destes NÃO é um dos quatro evangelhos?",ref:"",o:["Mateus","Marcos","Pedro","Lucas"],c:2,dica:"Os quatro são Mateus, Marcos, Lucas e João."},
+ {q:"Quem foi tentado pela serpente no jardim?",ref:"Gênesis 3:1",o:["Sara","Eva","Maria","Raquel"],c:1,dica:"Depois ofereceu o fruto a seu marido."},
+ {q:"Quem é o 'Bom Pastor' que dá a vida pelas ovelhas?",ref:"João 10:11",o:["Davi","Moisés","Jesus","Pedro"],c:2,dica:"Conhece as suas ovelhas pelo nome."},
+ {q:"O que Deus disse para criar a luz no primeiro dia?",ref:"Gênesis 1:3",o:["'Faça-se o sol'","'Haja luz'","'Brilhe o dia'","'Venha o fogo'"],c:1,dica:"E a luz se separou das trevas."},
+ {q:"Qual o nome do primeiro casal criado por Deus?",ref:"Gênesis 3:20",o:["Caim e Abel","Adão e Eva","Abraão e Sara","Noé e a esposa"],c:1,dica:"Habitavam o jardim do Éden."},
+ {q:"Quem traiu Sansão revelando o segredo de sua força?",ref:"Juízes 16:18",o:["Jezabel","Dalila","Ester","Mical"],c:1,dica:"Recebeu prata dos filisteus para isso."},
+ {q:"Onde estava a força de Sansão?",ref:"Juízes 16:17",o:["Nos braços","No cabelo","Nos olhos","Na voz"],c:1,dica:"Ele era nazireu desde o ventre."},
+ {q:"Qual anjo anunciou a Maria que ela teria um filho?",ref:"Lucas 1:26",o:["Miguel","Gabriel","Rafael","Uriel"],c:1,dica:"Disse: 'Não temas, Maria.'"},
+ {q:"Quem é a mãe de Jesus?",ref:"Lucas 1:31",o:["Marta","Maria","Isabel","Ana"],c:1,dica:"Era virgem e noiva de José."},
+ {q:"Quantos pães e peixes um menino ofereceu antes do milagre?",ref:"João 6:9",o:["2 pães e 5 peixes","5 pães e 2 peixes","7 pães e 7 peixes","12 pães"],c:1,dica:"Jesus alimentou multidões com isso."},
+ {q:"Quem foi o primeiro a morrer na Bíblia?",ref:"Gênesis 4:8",o:["Adão","Abel","Caim","Sete"],c:1,dica:"Morto pelo próprio irmão por inveja."},
+ {q:"Em que monte a arca de Noé repousou?",ref:"Gênesis 8:4",o:["Sinai","Ararate","Nebo","Carmelo"],c:1,dica:"Ali a arca parou após o dilúvio."},
+ {q:"Quem foi vendido pelos irmãos e virou governador no Egito?",ref:"Gênesis 45:8",o:["Benjamim","José","Judá","Rúben"],c:1,dica:"Mais tarde salvou a própria família da fome."},
+ {q:"Qual rio se transformou em sangue na primeira praga do Egito?",ref:"Êxodo 7:20",o:["Jordão","Nilo","Eufrates","Tigre"],c:1,dica:"Os peixes morreram e a água ficou imprópria."},
+ {q:"Quem era o irmão de Moisés que falava por ele ao faraó?",ref:"Êxodo 4:14",o:["Josué","Arão","Calebe","Hur"],c:1,dica:"Tornou-se o primeiro sumo sacerdote."},
+ {q:"Que cidade teve seus muros derrubados após Israel marchar ao redor dela?",ref:"Josué 6:20",o:["Ai","Jericó","Hebrom","Gibeão"],c:1,dica:"Marcharam por sete dias e tocaram trombetas."},
+ {q:"Quem chorou diante do túmulo do amigo antes de ressuscitá-lo?",ref:"João 11:35",o:["Pedro","Jesus","João","Marta"],c:1,dica:"'Jesus chorou' é o menor versículo da Bíblia."},
+ {q:"Qual rei mandou matar as crianças de Belém ao saber de Jesus?",ref:"Mateus 2:16",o:["César","Herodes","Pilatos","Faraó"],c:1,dica:"José fugiu com a família para o Egito."},
+ {q:"Quem batizava no Jordão e preparava o caminho do Senhor?",ref:"Marcos 1:4",o:["Pedro","João Batista","André","Zacarias"],c:1,dica:"Vestia pelos de camelo e comia mel silvestre."},
+ {q:"Qual rainha má queria matar o profeta Elias?",ref:"1 Reis 19:2",o:["Ester","Jezabel","Atalia","Vasti"],c:1,dica:"Era esposa do rei Acabe."},
+ {q:"Quantos filhos formaram as doze tribos de Israel?",ref:"Gênesis 35:22",o:["7","10","12","14"],c:2,dica:"Eram os filhos de Jacó."},
+ {q:"Quem foi levado ao céu sem morrer, num redemoinho?",ref:"2 Reis 2:11",o:["Enoque","Elias","Moisés","Isaías"],c:1,dica:"Um carro de fogo o separou de Eliseu."},
+ {q:"Quem caminhou com Deus e foi tomado, não vendo a morte?",ref:"Gênesis 5:24",o:["Noé","Enoque","Matusalém","Sete"],c:1,dica:"Era pai de Matusalém."},
+ {q:"Qual mulher idosa riu ao ouvir que teria um filho?",ref:"Gênesis 18:12",o:["Rebeca","Sara","Ana","Isabel"],c:1,dica:"Por isso o filho se chamou Isaque ('riso')."},
+ {q:"Qual rei sonhou com uma grande estátua que Daniel interpretou?",ref:"Daniel 2:1",o:["Dario","Belsazar","Nabucodonosor","Ciro"],c:2,dica:"A estátua tinha cabeça de ouro."},
+ {q:"Quem voltou para agradecer entre os dez leprosos curados?",ref:"Lucas 17:16",o:["Um fariseu","Um samaritano","Um romano","Um sacerdote"],c:1,dica:"Os outros nove não voltaram."},
+ {q:"Quantos leprosos Jesus curou de uma só vez?",ref:"Lucas 17:12",o:["3","7","10","12"],c:2,dica:"Apenas um voltou para agradecer."},
+ {q:"Quem disse 'eis aqui a serva do Senhor'?",ref:"Lucas 1:38",o:["Isabel","Maria","Ana","Marta"],c:1,dica:"Aceitou ser a mãe do Salvador."},
+ {q:"Qual profeta viu Nínive se arrepender após sua pregação?",ref:"Jonas 3:5",o:["Naum","Jonas","Amós","Joel"],c:1,dica:"O rei e todo o povo jejuaram."},
+ {q:"Quem viveu mais tempo, segundo a Bíblia?",ref:"Gênesis 5:27",o:["Adão","Noé","Matusalém","Enoque"],c:2,dica:"Chegou aos 969 anos."},
+ {q:"Em que cidade Jesus cresceu?",ref:"Lucas 2:39",o:["Belém","Jerusalém","Nazaré","Cafarnaum"],c:2,dica:"Por isso foi chamado de nazareno."},
+ {q:"Quem é a Pedra angular, fundamento da igreja?",ref:"Efésios 2:20",o:["Pedro","Paulo","Jesus Cristo","Moisés"],c:2,dica:"Os apóstolos e profetas são o alicerce; Ele, a principal pedra."},
+ {q:"Qual discípulo cortou a orelha do servo do sumo sacerdote?",ref:"João 18:10",o:["João","Pedro","Tiago","André"],c:1,dica:"Jesus curou a orelha do homem."},
+ {q:"Que comida João Batista comia no deserto?",ref:"Mateus 3:4",o:["Pão e vinho","Gafanhotos e mel silvestre","Peixe assado","Frutas secas"],c:1,dica:"Vivia de forma simples."},
+ {q:"Qual profeta teve a visão de um vale de ossos secos?",ref:"Ezequiel 37:1",o:["Daniel","Ezequiel","Isaías","Jeremias"],c:1,dica:"Os ossos voltaram a viver como um exército."},
+ {q:"Quantos anos Jesus tinha quando ensinou os doutores no templo?",ref:"Lucas 2:42",o:["7","10","12","18"],c:2,dica:"Seus pais o procuraram por três dias."},
+ {q:"Qual era a profissão de José, pai terreno de Jesus?",ref:"Mateus 13:55",o:["Pescador","Carpinteiro","Pastor","Escriba"],c:1,dica:"Jesus é chamado de 'filho do carpinteiro'."}
+],
+medio:[
+ {q:"Quantos livros há no Novo Testamento?",ref:"",o:["12","27","39","66"],c:1,dica:"O total da Bíblia é 66; o Antigo tem 39."},
+ {q:"Qual apóstolo era cobrador de impostos antes de seguir Jesus?",ref:"Mateus 9:9",o:["João","Mateus","André","Filipe"],c:1,dica:"Escreveu o primeiro evangelho."},
+ {q:"Quem negou Jesus três vezes antes do galo cantar?",ref:"Lucas 22:61",o:["Tomé","Judas","Pedro","Tiago"],c:2,dica:"Depois chorou amargamente e se arrependeu."},
+ {q:"Em que monte Elias desafiou os profetas de Baal?",ref:"1 Reis 18:19",o:["Monte Sinai","Monte Carmelo","Monte das Oliveiras","Monte Sião"],c:1,dica:"Fogo desceu do céu e consumiu o sacrifício."},
+ {q:"Quem foi a mãe de João Batista?",ref:"Lucas 1:13",o:["Maria","Ana","Isabel","Marta"],c:2,dica:"Era parenta de Maria e já idosa."},
+ {q:"Quem sucedeu Moisés na liderança de Israel?",ref:"Josué 1:2",o:["Calebe","Arão","Josué","Gideão"],c:2,dica:"Conduziu o povo na travessia do Jordão."},
+ {q:"Quantas pragas Deus enviou sobre o Egito?",ref:"Êxodo 7-12",o:["7","10","12","40"],c:1,dica:"A última foi a morte dos primogênitos."},
+ {q:"Qual rei pediu sabedoria a Deus em vez de riquezas?",ref:"1 Reis 3:9",o:["Davi","Saul","Salomão","Ezequias"],c:2,dica:"Construiu o primeiro templo em Jerusalém."},
+ {q:"Quem batizou Jesus no rio Jordão?",ref:"Mateus 3:13",o:["Pedro","João Batista","André","Zacarias"],c:1,dica:"Vestia pelos de camelo e comia gafanhotos e mel."},
+ {q:"Qual é o último livro do Antigo Testamento?",ref:"",o:["Malaquias","Apocalipse","Isaías","Zacarias"],c:0,dica:"Termina anunciando a vinda do profeta Elias."},
+ {q:"Em qual jardim Jesus orou antes de ser preso?",ref:"Mateus 26:36",o:["Éden","Getsêmani","Gólgota","Betânia"],c:1,dica:"Ficava no monte das Oliveiras."},
+ {q:"Quem foi vendido como escravo pelos próprios irmãos?",ref:"Gênesis 37:28",o:["Benjamim","José","Judá","Rúben"],c:1,dica:"Ganhou uma túnica de muitas cores do pai."},
+ {q:"Quem era o sumo sacerdote que julgou Jesus?",ref:"Mateus 26:57",o:["Anás","Caifás","Pilatos","Herodes"],c:1,dica:"Era genro de Anás."},
+ {q:"Qual evangelho começa com 'No princípio era o Verbo'?",ref:"João 1:1",o:["Mateus","Marcos","Lucas","João"],c:3,dica:"O mesmo autor escreveu o Apocalipse."},
+ {q:"Quantas pessoas se salvaram dentro da arca?",ref:"1 Pedro 3:20",o:["4","8","12","40"],c:1,dica:"Noé, sua esposa, três filhos e as esposas deles."},
+ {q:"Quem foi o primeiro rei de Israel?",ref:"1 Samuel 10:1",o:["Davi","Saul","Salomão","Samuel"],c:1,dica:"Era da tribo de Benjamim e muito alto."},
+ {q:"Qual profeta ungiu tanto Saul quanto Davi como reis?",ref:"1 Samuel 16:1",o:["Natã","Elias","Samuel","Eli"],c:2,dica:"Julgou Israel antes da monarquia."},
+ {q:"Quem era o amigo fiel de Davi, filho do rei Saul?",ref:"1 Samuel 18:1",o:["Joabe","Jônatas","Abner","Absalão"],c:1,dica:"A alma dele se ligou à de Davi."},
+ {q:"Qual profeta confrontou Davi após o pecado com Bate-Seba?",ref:"2 Samuel 12:7",o:["Gade","Natã","Elias","Samuel"],c:1,dica:"Contou a parábola da ovelhinha do pobre."},
+ {q:"Quem era o marido de Bate-Seba, morto a mando de Davi?",ref:"2 Samuel 11:3",o:["Joabe","Urias","Naum","Abner"],c:1,dica:"Era um soldado fiel, o heteu."},
+ {q:"Quem era o irmão gêmeo de Jacó?",ref:"Gênesis 25:25",o:["Labão","Esaú","Ismael","Ló"],c:1,dica:"Vendeu a primogenitura por um prato de comida."},
+ {q:"Por qual prato Esaú vendeu sua primogenitura?",ref:"Gênesis 25:34",o:["Pão e mel","Guisado de lentilhas","Carne assada","Figos secos"],c:1,dica:"Voltava faminto do campo."},
+ {q:"Qual profetisa julgou Israel sob uma palmeira?",ref:"Juízes 4:5",o:["Ester","Débora","Hulda","Ana"],c:1,dica:"Animou Baraque a lutar contra Sísera."},
+ {q:"Com quantos homens Gideão venceu os midianitas?",ref:"Juízes 7:7",o:["30","100","300","600"],c:2,dica:"Usaram trombetas, cântaros e tochas."},
+ {q:"Quem era a sogra de Rute que voltou a Belém?",ref:"Rute 1:22",o:["Orfa","Noemi","Ana","Abigail"],c:1,dica:"Pediu para ser chamada de 'Mara' (amargura)."},
+ {q:"Quem se casou com Rute e a resgatou como remidor?",ref:"Rute 4:13",o:["Boaz","Obede","Jessé","Elimeleque"],c:0,dica:"Tornou-se bisavô do rei Davi."},
+ {q:"Quem era o pai de Davi, morador de Belém?",ref:"1 Samuel 16:18",o:["Obede","Jessé","Boaz","Saul"],c:1,dica:"Tinha oito filhos; Davi era o caçula."},
+ {q:"Quem fez o bezerro de ouro enquanto Moisés estava no monte?",ref:"Êxodo 32:4",o:["Josué","Arão","Hur","Coré"],c:1,dica:"O povo o adorou como deus."},
+ {q:"Quem era a irmã de Moisés que liderou as mulheres com tamborins?",ref:"Êxodo 15:20",o:["Débora","Miriã","Ana","Raabe"],c:1,dica:"Cantou após a travessia do Mar Vermelho."},
+ {q:"Quantos espias foram enviados para examinar Canaã?",ref:"Números 13:2",o:["7","10","12","40"],c:2,dica:"Um de cada tribo."},
+ {q:"Quais dois espias confiaram em Deus e trouxeram bom relatório?",ref:"Números 14:6",o:["Arão e Hur","Josué e Calebe","Dã e Gade","Coré e Datã"],c:1,dica:"Só eles, daquela geração, entraram na Terra Prometida."},
+ {q:"Quem sucedeu o profeta Elias recebendo seu manto?",ref:"2 Reis 2:13",o:["Eliseu","Isaías","Geazi","Naum"],c:0,dica:"Pediu porção dobrada do espírito."},
+ {q:"Quem se curou da lepra mergulhando sete vezes no Jordão?",ref:"2 Reis 5:14",o:["Geazi","Naamã","Uzias","Joabe"],c:1,dica:"Era comandante do exército da Síria."},
+ {q:"Quem escreveu o evangelho de Lucas e o livro de Atos?",ref:"Lucas 1:3",o:["Marcos","Lucas","Paulo","Mateus"],c:1,dica:"Era médico e companheiro de Paulo."},
+ {q:"Quem batizou o eunuco etíope no deserto?",ref:"Atos 8:38",o:["Pedro","Filipe","Paulo","Estêvão"],c:1,dica:"O Espírito o arrebatou depois."},
+ {q:"Qual centurião romano se converteu pela pregação de Pedro?",ref:"Atos 10:1",o:["Júlio","Cornélio","Cláudio","Sérgio"],c:1,dica:"Era homem temente a Deus."},
+ {q:"Que casal mentiu ao Espírito Santo sobre o dinheiro e morreu?",ref:"Atos 5:1",o:["Áquila e Priscila","Ananias e Safira","Boaz e Rute","Aquila e Lídia"],c:1,dica:"Esconderam parte do valor da venda."},
+ {q:"Em qual cidade os discípulos foram chamados 'cristãos' pela primeira vez?",ref:"Atos 11:26",o:["Jerusalém","Antioquia","Éfeso","Roma"],c:1,dica:"Barnabé e Saulo ensinaram ali por um ano."},
+ {q:"Quem teve a visão de um grande lençol descendo do céu com animais?",ref:"Atos 10:11",o:["Paulo","Pedro","João","Tiago"],c:1,dica:"Deus mostrou que os gentios também seriam aceitos."},
+ {q:"Quem foi a vendedora de púrpura, primeira convertida na Europa?",ref:"Atos 16:14",o:["Dorcas","Lídia","Priscila","Febe"],c:1,dica:"O Senhor abriu seu coração em Filipos."},
+ {q:"Quem cantou louvores a Deus na prisão à meia-noite?",ref:"Atos 16:25",o:["Pedro e João","Paulo e Silas","Tiago e André","Barnabé e Marcos"],c:1,dica:"Um terremoto abriu as portas do cárcere."},
+ {q:"Qual governador romano condenou Jesus à crucificação?",ref:"Mateus 27:26",o:["Herodes","Pôncio Pilatos","César","Félix"],c:1,dica:"Lavou as mãos diante da multidão."},
+ {q:"Qual prisioneiro foi solto pela multidão em vez de Jesus?",ref:"Mateus 27:21",o:["Estêvão","Barrabás","Bartimeu","Lázaro"],c:1,dica:"Era um agitador e assassino."},
+ {q:"Quantas vezes Jesus disse que devemos perdoar?",ref:"Mateus 18:22",o:["7 vezes","70 vezes","Setenta vezes sete","100 vezes"],c:2,dica:"Ou seja, sempre, sem guardar conta."},
+ {q:"Qual parábola fala do filho que voltou arrependido ao pai?",ref:"Lucas 15:11",o:["O bom samaritano","O filho pródigo","O semeador","Os talentos"],c:1,dica:"O pai correu para abraçá-lo de longe."},
+ {q:"Qual parábola mostra um homem socorrendo o ferido na estrada?",ref:"Lucas 10:33",o:["O filho pródigo","O bom samaritano","As dez virgens","O rico e Lázaro"],c:1,dica:"Sacerdote e levita passaram sem ajudar."},
+ {q:"Jesus disse: 'Eu sou o caminho, a verdade e a...'?",ref:"João 14:6",o:["Luz","Vida","Paz","Porta"],c:1,dica:"'...ninguém vem ao Pai senão por mim.'"},
+ {q:"Quem viu Jesus ressuscitado primeiro, junto ao túmulo?",ref:"João 20:16",o:["Pedro","Maria Madalena","João","Tomé"],c:1,dica:"Ele a chamou pelo nome."},
+ {q:"Quem rolou a pedra da entrada do túmulo de Jesus?",ref:"Mateus 28:2",o:["Os soldados","Um anjo do Senhor","Pedro","As mulheres"],c:1,dica:"Houve um grande terremoto."},
+ {q:"Quantos dias Jesus apareceu aos discípulos após ressuscitar?",ref:"Atos 1:3",o:["3","7","40","50"],c:2,dica:"Depois subiu aos céus diante deles."},
+ {q:"Quantas pessoas se converteram após o sermão de Pedro no Pentecostes?",ref:"Atos 2:41",o:["cerca de 500","cerca de 3000","cerca de 5000","cerca de 120"],c:1,dica:"Foram batizadas naquele mesmo dia."},
+ {q:"Qual árvore Zaqueu subiu para ver Jesus?",ref:"Lucas 19:4",o:["Figueira","Sicômoro","Oliveira","Cedro"],c:1,dica:"Era baixo e a multidão era grande."},
+ {q:"Qual mulher tocou na orla do manto de Jesus e foi curada?",ref:"Marcos 5:25",o:["A viúva de Naim","A mulher com fluxo de sangue","A sogra de Pedro","A cananeia"],c:1,dica:"Sofria havia doze anos."},
+ {q:"Qual rei mandou decapitar João Batista?",ref:"Marcos 6:27",o:["Herodes Antipas","Pilatos","César","Arquelau"],c:0,dica:"Foi a pedido da filha de Herodias."},
+ {q:"De que monte Jesus subiu ao céu?",ref:"Atos 1:12",o:["Sinai","Monte das Oliveiras","Carmelo","Sião"],c:1,dica:"Ficava perto de Jerusalém."},
+ {q:"Com que idade, aproximadamente, Jesus iniciou seu ministério?",ref:"Lucas 3:23",o:["18 anos","25 anos","30 anos","40 anos"],c:2,dica:"Logo após ser batizado por João."},
+ {q:"Qual apóstolo era chamado Dídimo, 'o gêmeo'?",ref:"João 11:16",o:["Pedro","Tomé","Filipe","Bartolomeu"],c:1,dica:"Confessou: 'Senhor meu e Deus meu'."},
+ {q:"Que novo nome Jesus deu a Simão?",ref:"João 1:42",o:["Cefas (Pedro)","Boanerges","Barnabé","Tadeu"],c:0,dica:"Significa 'pedra'."},
+ {q:"Que dupla de irmãos Jesus chamou de 'filhos do trovão'?",ref:"Marcos 3:17",o:["Pedro e André","Tiago e João","Filipe e Bartolomeu","Mateus e Tomé"],c:1,dica:"Eram pescadores, filhos de Zebedeu."},
+ {q:"Qual rainha visitou Salomão atraída por sua sabedoria?",ref:"1 Reis 10:1",o:["Rainha Vasti","Rainha de Sabá","Rainha Ester","Rainha Jezabel"],c:1,dica:"Trouxe ouro, especiarias e pedras preciosas."},
+ {q:"Quem foi o filho rebelde de Davi que tentou tomar o trono?",ref:"2 Samuel 15:10",o:["Salomão","Absalão","Adonias","Amnom"],c:1,dica:"Morreu pendurado pelos cabelos numa árvore."},
+ {q:"Qual profeta foi mandado casar com Gômer, a infiel?",ref:"Oseias 1:3",o:["Amós","Oseias","Joel","Jonas"],c:1,dica:"Simbolizava a infidelidade de Israel."},
+ {q:"Quem escreveu a maior parte das cartas do Novo Testamento?",ref:"",o:["Pedro","João","Paulo","Tiago"],c:2,dica:"Antes se chamava Saulo de Tarso."},
+ {q:"Para qual cidade Paulo ia quando se converteu no caminho?",ref:"Atos 9:3",o:["Roma","Antioquia","Damasco","Éfeso"],c:2,dica:"Uma luz o cercou e ele ficou cego três dias."},
+ {q:"Qual apóstolo substituiu Judas Iscariotes entre os doze?",ref:"Atos 1:26",o:["Barnabé","Estêvão","Matias","Silas"],c:2,dica:"Foi escolhido por sorte entre dois candidatos."},
+ {q:"Qual mulher costureira Pedro ressuscitou em Jope?",ref:"Atos 9:40",o:["Lídia","Dorcas (Tabita)","Priscila","Febe"],c:1,dica:"Fazia roupas para as viúvas."},
+ {q:"Quem é chamado de 'o discípulo a quem Jesus amava'?",ref:"João 13:23",o:["Pedro","João","Tiago","André"],c:1,dica:"Tradicionalmente, o autor do quarto evangelho."},
+ {q:"Quantos frutos do Espírito são citados em Gálatas 5?",ref:"Gálatas 5:22",o:["7","9","10","12"],c:1,dica:"Amor, alegria, paz, e mais seis."},
+ {q:"Quem era o rei do Egito que não conheceu José e oprimiu Israel?",ref:"Êxodo 1:8",o:["Um novo faraó","Nabucodonosor","Herodes","Ciro"],c:0,dica:"Ordenou matar os meninos hebreus."},
+ {q:"Que tribo não recebeu terra, mas servia no tabernáculo?",ref:"Números 18:21",o:["Judá","Levi","Benjamim","Dã"],c:1,dica:"Recebiam os dízimos do povo."},
+ {q:"Quem disse 'crê no Senhor Jesus e serás salvo, tu e a tua casa'?",ref:"Atos 16:31",o:["Pedro","Paulo e Silas","João","Estêvão"],c:1,dica:"Foi dito ao carcereiro de Filipos."},
+ {q:"Quem guardou as capas dos que apedrejaram Estêvão?",ref:"Atos 7:58",o:["Pilatos","Saulo","Herodes","Caifás"],c:1,dica:"Depois se tornou o apóstolo Paulo."},
+ {q:"Em que mar Jesus acalmou a tempestade?",ref:"Marcos 4:39",o:["Mar Morto","Mar da Galileia","Mar Vermelho","Mar Mediterrâneo"],c:1,dica:"Também chamado lago de Genesaré."},
+ {q:"Quem foi o pai de João Batista, que ficou mudo?",ref:"Lucas 1:13",o:["Simeão","Zacarias","Eli","José"],c:1,dica:"Voltou a falar ao escrever o nome do filho."},
+ {q:"Qual discípulo trouxe seu irmão Pedro a Jesus?",ref:"João 1:41",o:["Tiago","André","Filipe","Bartolomeu"],c:1,dica:"Disse: 'Achamos o Messias'."},
+ {q:"Quem perdeu tudo, mas disse 'o Senhor deu, o Senhor tomou'?",ref:"Jó 1:21",o:["Salomão","Jó","Davi","Abraão"],c:1,dica:"Era homem íntegro e temente a Deus."},
+ {q:"Quantos amigos vieram consolar Jó (e depois o repreenderam)?",ref:"Jó 2:11",o:["2","3","4","7"],c:1,dica:"Elifaz, Bildade e Zofar."},
+ {q:"Qual rei viu uma mão escrever 'Mene, Mene, Tequel' na parede?",ref:"Daniel 5:25",o:["Nabucodonosor","Belsazar","Dario","Ciro"],c:1,dica:"Naquela noite a Babilônia caiu."},
+ {q:"Quem escondeu os espias israelitas em Jericó?",ref:"Josué 2:1",o:["Débora","Raabe","Noemi","Ana"],c:1,dica:"Pôs um cordão escarlate na janela."},
+ {q:"De qual cidade era o gigante Golias?",ref:"1 Samuel 17:4",o:["Asdode","Gate","Ecrom","Gaza"],c:1,dica:"Era um campeão filisteu altíssimo."},
+ {q:"Qual profeta repreendeu Acabe pela vinha de Nabote?",ref:"1 Reis 21:17",o:["Eliseu","Elias","Natã","Miqueias"],c:1,dica:"Anunciou juízo sobre a casa de Acabe."},
+ {q:"Para qual igreja Paulo escreveu o capítulo do amor (1 Co 13)?",ref:"1 Coríntios 1:2",o:["Romanos","Coríntios","Efésios","Gálatas"],c:1,dica:"'Ainda que eu falasse as línguas dos homens...'"},
+ {q:"Quem era o escravo fugitivo sobre quem Paulo escreveu a Filemom?",ref:"Filemom 1:10",o:["Tíquico","Onésimo","Epafras","Demas"],c:1,dica:"Paulo pediu que o recebessem como irmão."},
+ {q:"Para quais dois jovens líderes Paulo escreveu cartas pastorais?",ref:"1 Timóteo 1:2",o:["Lucas e Marcos","Timóteo e Tito","Silas e Barnabé","Áquila e Apolo"],c:1,dica:"Orientou-os sobre a liderança das igrejas."},
+ {q:"Em qual cidade houve um motim por causa da deusa Diana (Ártemis)?",ref:"Atos 19:28",o:["Atenas","Éfeso","Corinto","Roma"],c:1,dica:"Os artesãos temiam perder o lucro com ídolos."},
+ {q:"Onde Paulo pregou no Areópago sobre o 'Deus desconhecido'?",ref:"Atos 17:22",o:["Roma","Atenas","Corinto","Filipos"],c:1,dica:"Citou poetas gregos em seu discurso."},
+ {q:"Diante de qual rei Paulo quase o persuadiu a ser cristão?",ref:"Atos 26:28",o:["Félix","Festo","Agripa","Herodes"],c:2,dica:"Paulo defendeu sua fé em julgamento."},
+ {q:"Para qual cidade Paulo foi como prisioneiro após apelar a César?",ref:"Atos 25:11",o:["Antioquia","Jerusalém","Roma","Éfeso"],c:2,dica:"Era cidadão romano e tinha esse direito."},
+ {q:"Quem ajudou Jesus a carregar a cruz a caminho do Calvário?",ref:"Marcos 15:21",o:["Nicodemos","Simão Cireneu","José de Arimateia","João"],c:1,dica:"Vinha do campo e foi obrigado pelos soldados."},
+ {q:"Quem pediu o corpo de Jesus a Pilatos e o sepultou?",ref:"João 19:38",o:["Nicodemos","José de Arimateia","Pedro","Lázaro"],c:1,dica:"Era membro do conselho e discípulo secreto."},
+ {q:"Qual fariseu visitou Jesus à noite e ouviu sobre o novo nascimento?",ref:"João 3:1",o:["Gamaliel","Nicodemos","Caifás","Anás"],c:1,dica:"Jesus lhe disse: 'Importa nascer de novo'."},
+ {q:"Qual era o nome do mestre da Lei que defendeu os apóstolos no Sinédrio?",ref:"Atos 5:34",o:["Gamaliel","Nicodemos","Caifás","Esdras"],c:0,dica:"Paulo foi educado aos seus pés."},
+ {q:"Em quantos dias Jesus ressuscitou, conforme as Escrituras?",ref:"Mateus 16:21",o:["No mesmo dia","No segundo dia","Ao terceiro dia","No sétimo dia"],c:2,dica:"Como Jonas, três dias e três noites."},
+ {q:"Quem é chamado 'a Luz do mundo'?",ref:"João 8:12",o:["João Batista","Jesus","Pedro","Moisés"],c:1,dica:"'Quem me segue não andará em trevas'."},
+ {q:"Qual apóstolo pregou o primeiro sermão no dia de Pentecostes?",ref:"Atos 2:14",o:["João","Pedro","Tiago","Paulo"],c:1,dica:"Cerca de três mil se converteram."},
+ {q:"Quem é o 'autor e consumador da fé', segundo Hebreus?",ref:"Hebreus 12:2",o:["Moisés","Abraão","Jesus","Paulo"],c:2,dica:"Devemos olhar firmemente para Ele."},
+ {q:"Em qual cidade Jesus fez o seu primeiro milagre?",ref:"João 2:1",o:["Caná","Cafarnaum","Naim","Betânia"],c:0,dica:"Caná da Galileia, num casamento."},
+ {q:"Quem traiu Jesus com um beijo?",ref:"Lucas 22:48",o:["Pedro","Judas Iscariotes","Tomé","Tiago"],c:1,dica:"'Trais o Filho do Homem com um beijo?'"},
+ {q:"Quantos pescadores Jesus chamou primeiro à beira-mar?",ref:"Mateus 4:18",o:["2","4","7","12"],c:1,dica:"Pedro, André, Tiago e João."},
+ {q:"Qual pai da fé teve seu nome ligado a 'pai de muitas nações'?",ref:"Romanos 4:17",o:["Isaque","Abraão","Jacó","Noé"],c:1,dica:"A fé dele foi creditada como justiça."}
+],
+intermediario:[
+ {q:"Quantos anos os israelitas peregrinaram pelo deserto?",ref:"Números 14:33",o:["7","12","40","70"],c:2,dica:"Uma geração inteira até entrar na Terra Prometida."},
+ {q:"Qual profeta foi levado ao céu num carro de fogo?",ref:"2 Reis 2:11",o:["Eliseu","Elias","Isaías","Enoque"],c:1,dica:"Deixou o manto para o discípulo Eliseu."},
+ {q:"Em que monte a arca de Noé repousou após o dilúvio?",ref:"Gênesis 8:4",o:["Sinai","Ararate","Nebo","Horebe"],c:1,dica:"Fica na região da atual Turquia/Armênia."},
+ {q:"Quantos capítulos tem o livro de Salmos?",ref:"",o:["100","120","150","176"],c:2,dica:"É o livro mais longo da Bíblia."},
+ {q:"Qual mulher se tornou rainha e salvou seu povo da destruição?",ref:"Ester 4:14",o:["Rute","Débora","Ester","Abigail"],c:2,dica:"'Para um momento como este chegaste ao reino.'"},
+ {q:"Em qual cidade Paulo ia quando se converteu pelo caminho?",ref:"Atos 9:3",o:["Roma","Antioquia","Damasco","Éfeso"],c:2,dica:"Uma luz do céu o cercou e ele ficou cego três dias."},
+ {q:"Qual profeta foi mandado casar com Gômer, uma mulher infiel?",ref:"Oseias 1:2",o:["Amós","Oseias","Joel","Miqueias"],c:1,dica:"Seu casamento simbolizava Israel infiel a Deus."},
+ {q:"Quantos eram os frutos do Espírito citados em Gálatas 5?",ref:"Gálatas 5:22",o:["7","9","10","12"],c:1,dica:"Começa com amor, alegria e paz."},
+ {q:"Qual cidade teve seus muros derrubados ao som das trombetas?",ref:"Josué 6:20",o:["Jericó","Ai","Hebrom","Siló"],c:0,dica:"O povo marchou ao redor dela por sete dias."},
+ {q:"Quem escreveu a maior parte das epístolas do Novo Testamento?",ref:"",o:["Pedro","João","Paulo","Tiago"],c:2,dica:"Antes se chamava Saulo de Tarso."},
+ {q:"Qual rei viu uma mão escrever na parede 'Mene, Mene, Tequel'?",ref:"Daniel 5:25",o:["Nabucodonosor","Belsazar","Dario","Ciro"],c:1,dica:"Era sucessor de Nabucodonosor na Babilônia."},
+ {q:"Quem foi o pai de João Batista?",ref:"Lucas 1:13",o:["José","Zacarias","Simeão","Eli"],c:1,dica:"Ficou mudo até o nascimento do filho."},
+ {q:"Qual apóstolo substituiu Judas Iscariotes entre os doze?",ref:"Atos 1:26",o:["Barnabé","Estêvão","Matias","Tiago"],c:2,dica:"Foi escolhido por sorte entre dois candidatos."},
+ {q:"Qual era o nome do servo de Eliseu, castigado com lepra?",ref:"2 Reis 5:27",o:["Geazi","Naamã","Baruque","Obede"],c:0,dica:"Mentiu para receber presentes de Naamã."},
+ {q:"Quem foi o homem mais velho citado na Bíblia?",ref:"Gênesis 5:27",o:["Adão","Matusalém","Noé","Enoque"],c:1,dica:"Viveu 969 anos."},
+ {q:"Quantos anos José tinha quando foi vendido pelos irmãos?",ref:"Gênesis 37:2",o:["12","17","20","30"],c:1,dica:"Cuidava dos rebanhos com os irmãos."},
+ {q:"Quantos anos de fome José previu no sonho do faraó?",ref:"Gênesis 41:30",o:["3","5","7","12"],c:2,dica:"Precedidos por sete anos de fartura."},
+ {q:"Quantas vacas gordas e magras havia no sonho do faraó?",ref:"Gênesis 41:2",o:["3 e 3","5 e 5","7 e 7","10 e 10"],c:2,dica:"Representavam anos de fartura e de fome."},
+ {q:"Quantos filhos de José tornaram-se tribos de Israel?",ref:"Gênesis 48:5",o:["1","2","3","4"],c:1,dica:"Efraim e Manassés."},
+ {q:"Em que monte Moisés viu a Terra Prometida e morreu?",ref:"Deuteronômio 34:1",o:["Sinai","Horebe","Nebo","Carmelo"],c:2,dica:"Ninguém soube o lugar de seu sepultamento."},
+ {q:"Quantos anos Moisés viveu?",ref:"Deuteronômio 34:7",o:["80","100","120","150"],c:2,dica:"Seu vigor não havia se esgotado."},
+ {q:"Qual rei de Judá teve 15 anos acrescentados à sua vida?",ref:"2 Reis 20:6",o:["Josias","Ezequias","Acaz","Manassés"],c:1,dica:"O profeta Isaías levou a notícia."},
+ {q:"Qual rei encontrou o Livro da Lei ao reformar o templo?",ref:"2 Reis 22:8",o:["Ezequias","Josias","Joás","Uzias"],c:1,dica:"Rasgou as vestes ao ouvir as palavras."},
+ {q:"Qual rei de Judá começou a reinar com apenas 7 anos?",ref:"2 Reis 11:21",o:["Joás","Manassés","Uzias","Josias"],c:0,dica:"Foi escondido no templo pela tia Jeoseba."},
+ {q:"Quem profetizou que Israel ficaria 70 anos cativo na Babilônia?",ref:"Jeremias 25:11",o:["Isaías","Jeremias","Ezequiel","Daniel"],c:1,dica:"É chamado de 'profeta chorão'."},
+ {q:"Qual profeta foi lançado numa cisterna cheia de lama?",ref:"Jeremias 38:6",o:["Daniel","Jeremias","Miqueias","Urias"],c:1,dica:"Ebede-Meleque o resgatou com cordas."},
+ {q:"Quem liderou a reconstrução dos muros de Jerusalém?",ref:"Neemias 2:17",o:["Esdras","Neemias","Zorobabel","Ageu"],c:1,dica:"Era copeiro do rei da Pérsia."},
+ {q:"Qual escriba ensinou a Lei ao povo após o cativeiro?",ref:"Esdras 7:6",o:["Neemias","Esdras","Baruque","Zacarias"],c:1,dica:"Lia a Lei diante de homens e mulheres."},
+ {q:"Qual era a esposa de Acabe que perseguia os profetas?",ref:"1 Reis 21:25",o:["Atalia","Jezabel","Vasti","Herodias"],c:1,dica:"Sua morte foi anunciada por Elias."},
+ {q:"Como morreu Absalão, filho rebelde de Davi?",ref:"2 Samuel 18:9",o:["Por espada em batalha","Preso pelos cabelos numa árvore","Afogado","Por veneno"],c:1,dica:"Joabe o atravessou com dardos."},
+ {q:"Que profeta multiplicou o azeite da viúva endividada?",ref:"2 Reis 4:1",o:["Elias","Eliseu","Natã","Gade"],c:1,dica:"Os credores queriam levar seus filhos."},
+ {q:"Qual profeta ressuscitou o filho da viúva de Sarepta?",ref:"1 Reis 17:22",o:["Eliseu","Elias","Isaías","Natã"],c:1,dica:"A farinha e o azeite dela não se acabaram."},
+ {q:"Quantas viagens missionárias Paulo realizou?",ref:"Atos",o:["1","2","3","4"],c:2,dica:"Além da viagem final como prisioneiro a Roma."},
+ {q:"Em qual ilha Paulo naufragou a caminho de Roma?",ref:"Atos 28:1",o:["Chipre","Creta","Malta","Patmos"],c:2,dica:"Foi picado por uma víbora e nada sofreu."},
+ {q:"Em que ilha o apóstolo João escreveu o Apocalipse?",ref:"Apocalipse 1:9",o:["Creta","Patmos","Chipre","Malta"],c:1,dica:"Estava ali por causa da Palavra de Deus."},
+ {q:"Qual reino levou Israel (norte) cativo em 722 a.C.?",ref:"2 Reis 17:6",o:["Babilônia","Assíria","Pérsia","Egito"],c:1,dica:"Levou as dez tribos do norte."},
+ {q:"Qual império destruiu Jerusalém e o templo em 586 a.C.?",ref:"2 Reis 25:9",o:["Assíria","Babilônia","Pérsia","Roma"],c:1,dica:"Sob o rei Nabucodonosor."},
+ {q:"Qual rei persa autorizou a volta dos judeus do cativeiro?",ref:"Esdras 1:1",o:["Dario","Ciro","Assuero","Artaxerxes"],c:1,dica:"Profetizado por Isaías muito antes."},
+ {q:"Qual era a capital do reino do norte (Israel)?",ref:"1 Reis 16:24",o:["Jerusalém","Samaria","Betel","Siquém"],c:1,dica:"Comprada por Onri por dois talentos de prata."},
+ {q:"Quem dividiu o reino de Israel após a morte de Salomão?",ref:"1 Reis 12:16",o:["Saul e Davi","Roboão e Jeroboão","Acabe e Jeú","Asa e Onri"],c:1,dica:"Dez tribos ao norte, duas ao sul."},
+ {q:"Quantas tribos seguiram Roboão, no reino do sul?",ref:"1 Reis 12:21",o:["2","4","6","10"],c:0,dica:"Judá e Benjamim."},
+ {q:"Quem escondeu o pequeno rei Joás no templo por seis anos?",ref:"2 Reis 11:2",o:["Atalia","Jeoseba","Hulda","Mical"],c:1,dica:"Era irmã do rei Acazias."},
+ {q:"Qual profeta teve a visão de um vale de ossos secos?",ref:"Ezequiel 37:1",o:["Jeremias","Daniel","Ezequiel","Isaías"],c:2,dica:"Os ossos voltaram a viver como um exército."},
+ {q:"Quem foi o primeiro mártir da igreja cristã?",ref:"Atos 7:59",o:["Tiago","Estêvão","Barnabé","Paulo"],c:1,dica:"Apedrejado enquanto Saulo guardava as capas."},
+ {q:"Quantas igrejas recebem cartas no início do Apocalipse?",ref:"Apocalipse 1:11",o:["3","7","10","12"],c:1,dica:"Éfeso, Esmirna, Pérgamo, Tiatira e mais três."},
+ {q:"Quem foi a primeira convertida na Europa, vendedora de púrpura?",ref:"Atos 16:14",o:["Dorcas","Lídia","Febe","Priscila"],c:1,dica:"Sua casa virou ponto de reunião em Filipos."},
+ {q:"Qual casal de tendeiros instruiu Apolo mais perfeitamente?",ref:"Atos 18:26",o:["Ananias e Safira","Áquila e Priscila","Boaz e Rute","Félix e Drusila"],c:1,dica:"Eram companheiros de ofício de Paulo."},
+ {q:"Qual jovem caiu de uma janela e Paulo o ressuscitou?",ref:"Atos 20:9",o:["Êutico","Onésimo","Trófimo","Demas"],c:0,dica:"Dormiu durante a longa pregação."},
+ {q:"Qual era a profissão de Amós antes de profetizar?",ref:"Amós 7:14",o:["Sacerdote","Pastor e agricultor","Escriba","Soldado"],c:1,dica:"Cuidava de gado e de sicômoros."},
+ {q:"Qual profeta perguntou 'até quando clamarei?' diante da violência?",ref:"Habacuque 1:2",o:["Naum","Habacuque","Sofonias","Ageu"],c:1,dica:"Ouviu como resposta 'o justo viverá pela fé'."},
+ {q:"Qual profeta menor pregou juízo apenas contra Edom?",ref:"Obadias 1:1",o:["Naum","Obadias","Joel","Ageu"],c:1,dica:"É o menor livro do Antigo Testamento."},
+ {q:"Qual profeta anunciou que de Belém sairia o governador de Israel?",ref:"Miqueias 5:2",o:["Isaías","Miqueias","Joel","Zacarias"],c:1,dica:"Profecia cumprida no nascimento de Jesus."},
+ {q:"Qual o último profeta a escrever no Antigo Testamento?",ref:"",o:["Zacarias","Ageu","Malaquias","Joel"],c:2,dica:"Cerca de 400 anos antes de João Batista."},
+ {q:"Qual profetisa foi consultada sobre o Livro da Lei no tempo de Josias?",ref:"2 Reis 22:14",o:["Débora","Hulda","Miriã","Ana"],c:1,dica:"Confirmou o juízo escrito no livro."},
+ {q:"Quantos anos Davi reinou ao todo sobre Israel?",ref:"2 Samuel 5:4",o:["20","30","40","50"],c:2,dica:"Sete anos em Hebrom e mais em Jerusalém."},
+ {q:"Qual o nome hebraico da rainha Ester?",ref:"Ester 2:7",o:["Hadassa","Vasti","Abigail","Zípora"],c:0,dica:"Mardoqueu a criou como filha."},
+ {q:"Quem se recusou a se curvar a Hamã, gerando a crise no livro de Ester?",ref:"Ester 3:2",o:["Mardoqueu","Daniel","Neemias","Esdras"],c:0,dica:"Era primo e tutor de Ester."},
+ {q:"Qual rei persa era marido da rainha Ester?",ref:"Ester 1:1",o:["Ciro","Dario","Assuero (Xerxes)","Artaxerxes"],c:2,dica:"Reinava da Índia à Etiópia."},
+ {q:"Quem teve a visão das quatro grandes feras simbolizando reinos?",ref:"Daniel 7:3",o:["Ezequiel","Daniel","Zacarias","João"],c:1,dica:"Cada fera representava um império."},
+ {q:"Quais eram os nomes babilônicos dos três amigos de Daniel?",ref:"Daniel 1:7",o:["Ananias, Misael e Azarias","Sadraque, Mesaque e Abede-Nego","Gade, Aser e Dã","Davi, Eli e Jó"],c:1,dica:"Em hebraico eram Ananias, Misael e Azarias."},
+ {q:"Qual profeta confrontou Davi com a parábola da ovelhinha?",ref:"2 Samuel 12:1",o:["Gade","Natã","Samuel","Aías"],c:1,dica:"Davi se arrependeu e escreveu o Salmo 51."},
+ {q:"Que salmo Davi escreveu após ser confrontado por seu pecado?",ref:"Salmos 51:1",o:["Salmo 23","Salmo 51","Salmo 91","Salmo 119"],c:1,dica:"'Cria em mim, ó Deus, um coração puro'."},
+ {q:"Quem foi o sumo sacerdote que ungiu Salomão como rei?",ref:"1 Reis 1:39",o:["Abiatar","Zadoque","Eli","Anás"],c:1,dica:"Usou o azeite do tabernáculo."},
+ {q:"Qual profeta confrontou os 450 profetas de Baal no Carmelo?",ref:"1 Reis 18:22",o:["Eliseu","Elias","Miqueias","Natã"],c:1,dica:"O fogo de Deus consumiu o sacrifício molhado."},
+ {q:"Qual anjo é chamado 'o grande príncipe' que defende Israel?",ref:"Daniel 12:1",o:["Gabriel","Miguel","Rafael","Uriel"],c:1,dica:"Aparece em momentos decisivos."},
+ {q:"Qual anjo explicou as visões a Daniel?",ref:"Daniel 8:16",o:["Miguel","Gabriel","Rafael","Uriel"],c:1,dica:"O mesmo que depois anunciou a Maria."},
+ {q:"Qual rei babilônico ficou como animal por sete tempos?",ref:"Daniel 4:33",o:["Belsazar","Nabucodonosor","Evil-Merodaque","Dario"],c:1,dica:"Comeu erva como os bois até reconhecer a Deus."},
+ {q:"Em qual cidade Pedro teve a visão que abriu o evangelho aos gentios?",ref:"Atos 10:9",o:["Jope","Cesareia","Lida","Antioquia"],c:0,dica:"Estava orando sobre o terraço."},
+ {q:"Qual apóstolo foi o primeiro a ser martirizado, morto por Herodes?",ref:"Atos 12:2",o:["Pedro","Tiago, irmão de João","Estêvão","André"],c:1,dica:"Morreu à espada."},
+ {q:"Quem libertou Pedro da prisão de forma sobrenatural?",ref:"Atos 12:7",o:["Gabriel","Miguel","Um anjo do Senhor","Rafael"],c:2,dica:"As correntes caíram de suas mãos."},
+ {q:"Qual era a profissão de Paulo, exercida para se sustentar?",ref:"Atos 18:3",o:["Pescador","Fabricante de tendas","Médico","Escriba"],c:1,dica:"Trabalhava com Áquila e Priscila."},
+ {q:"Que dom Paulo diz ser o maior, em 1 Coríntios 13?",ref:"1 Coríntios 13:13",o:["A fé","A esperança","O amor","O conhecimento"],c:2,dica:"'O maior destes é o amor'."},
+ {q:"Quem foi chamado ainda no ventre para ser profeta às nações?",ref:"Jeremias 1:5",o:["Isaías","Jeremias","Ezequiel","Samuel"],c:1,dica:"'Antes que te formasses no ventre, eu te conheci'."},
+ {q:"Qual profeta viu o Senhor num trono alto, com serafins?",ref:"Isaías 6:1",o:["Ezequiel","Isaías","Daniel","Jeremias"],c:1,dica:"'Santo, santo, santo é o Senhor dos Exércitos'."},
+ {q:"Quantas asas tinham os serafins na visão de Isaías?",ref:"Isaías 6:2",o:["2","4","6","8"],c:2,dica:"Com duas cobriam o rosto, com duas os pés e com duas voavam."},
+ {q:"Qual capítulo de Isaías descreve o 'Servo Sofredor'?",ref:"Isaías 53:1",o:["40","49","53","61"],c:2,dica:"'Ferido por causa das nossas transgressões'."},
+ {q:"Qual profeta comeu um rolo que era doce como mel?",ref:"Ezequiel 3:3",o:["Jeremias","Ezequiel","Daniel","Zacarias"],c:1,dica:"Representava a Palavra que deveria pregar."},
+ {q:"Qual juiz fez um voto precipitado envolvendo a própria filha?",ref:"Juízes 11:30",o:["Gideão","Jefté","Sansão","Otniel"],c:1,dica:"Era um valente guerreiro de Gileade."},
+ {q:"Qual juiz era canhoto e matou o rei Eglom de Moabe?",ref:"Juízes 3:21",o:["Otniel","Eúde","Sangar","Baraque"],c:1,dica:"Escondeu uma adaga na coxa direita."},
+ {q:"Quem foi o general implacável do exército de Davi?",ref:"2 Samuel 8:16",o:["Abner","Joabe","Amasa","Benaia"],c:1,dica:"Comandou o exército por muitos anos."},
+ {q:"Como morreu Jezabel, conforme a profecia de Elias?",ref:"2 Reis 9:33",o:["Por doença","Lançada da janela e devorada por cães","Por espada","Afogada"],c:1,dica:"Cumpriu a palavra do Senhor."},
+ {q:"Qual rei viu a sombra recuar dez graus como sinal de cura?",ref:"2 Reis 20:11",o:["Josias","Ezequias","Acaz","Uzias"],c:1,dica:"O sinal foi dado pelo profeta Isaías."},
+ {q:"Qual rei ofereceu incenso indevidamente e ficou leproso?",ref:"2 Crônicas 26:19",o:["Acaz","Uzias","Manassés","Joás"],c:1,dica:"Usurpou função que era só dos sacerdotes."},
+ {q:"Quem escreveu o livro de Lamentações, segundo a tradição?",ref:"Lamentações",o:["Davi","Jeremias","Salomão","Asafe"],c:1,dica:"Lamenta a destruição de Jerusalém."},
+ {q:"Qual o nome do vale onde Davi enfrentou Golias?",ref:"1 Samuel 17:2",o:["Vale do Elá","Vale de Josafá","Vale de Aijalom","Vale de Siquém"],c:0,dica:"Os exércitos acampavam em montes opostos."},
+ {q:"Qual rei mandou queimar o rolo das profecias de Jeremias?",ref:"Jeremias 36:23",o:["Zedequias","Jeoaquim","Josias","Acabe"],c:1,dica:"Baruque reescreveu tudo depois."},
+ {q:"Quem profetizou a vinda do Espírito 'sobre toda a carne'?",ref:"Joel 2:28",o:["Amós","Joel","Oseias","Sofonias"],c:1,dica:"Pedro citou esse texto em Atos 2."},
+ {q:"Qual líder conduziu o primeiro grupo de volta e lançou os fundamentos do templo?",ref:"Esdras 3:8",o:["Neemias","Zorobabel","Esdras","Ageu"],c:1,dica:"Era da linhagem real de Davi."},
+ {q:"Quais profetas incentivaram a reconstrução do templo após o exílio?",ref:"Esdras 5:1",o:["Isaías e Jeremias","Ageu e Zacarias","Joel e Amós","Naum e Obadias"],c:1,dica:"Animaram o povo a terminar a obra."},
+ {q:"Qual mulher sábia evitou a vingança de Davi e depois se casou com ele?",ref:"1 Samuel 25:23",o:["Mical","Abigail","Bate-Seba","Ainoã"],c:1,dica:"Era esposa do insensato Nabal."},
+ {q:"Qual era o nome do filho coxo de Jônatas, a quem Davi mostrou bondade?",ref:"2 Samuel 9:6",o:["Mefibosete","Isbosete","Ziba","Quileabe"],c:0,dica:"Comia à mesa do rei como um dos filhos."},
+ {q:"Qual profeta repreendeu Acabe pela vinha de Nabote?",ref:"1 Reis 21:17",o:["Eliseu","Elias","Natã","Miqueias"],c:1,dica:"Anunciou juízo sobre toda a casa de Acabe."},
+ {q:"Quem foi enviado a ungir Jeú como rei de Israel?",ref:"2 Reis 9:1",o:["Elias","Um discípulo de Eliseu","Natã","Isaías"],c:1,dica:"Jeú então destruiu a casa de Acabe."},
+ {q:"A qual rei filisteu Davi fugiu, fingindo-se de louco?",ref:"1 Samuel 21:13",o:["Aquis","Abimeleque","Hanum","Nabal"],c:0,dica:"Davi temeu e disfarçou a sanidade diante dele."},
+ {q:"Qual profeta teve a mão paralisada ao repreender Jeroboão, e foi curado?",ref:"1 Reis 13:4",o:["Aías","Um homem de Deus de Judá","Semaías","Iddo"],c:1,dica:"A mão se restaurou após ele orar."},
+ {q:"Qual rei de Judá confiou no Senhor como nenhum outro e tirou os altos?",ref:"2 Reis 18:5",o:["Asa","Ezequias","Josias","Jeosafá"],c:1,dica:"Quebrou também a serpente de bronze."},
+ {q:"Quem foi a mãe de Samuel, que o consagrou ao Senhor?",ref:"1 Samuel 1:20",o:["Penina","Ana","Noemi","Isabel"],c:1,dica:"Orou no templo e foi tida por bêbada por Eli."},
+ {q:"Qual rei de Israel reinou só sete dias e ateou fogo ao palácio sobre si?",ref:"1 Reis 16:18",o:["Zinri","Elá","Onri","Tibni"],c:0,dica:"Ao ver a cidade tomada."},
+ {q:"Em qual monte Saul e seus filhos morreram em batalha?",ref:"1 Samuel 31:8",o:["Gilboa","Carmelo","Tabor","Gerizim"],c:0,dica:"Os corpos foram expostos no muro de Bete-Sã."},
+ {q:"Quem foi o sacerdote que criou Samuel e julgou Israel antes dele?",ref:"1 Samuel 4:18",o:["Eli","Zadoque","Abiatar","Aimeleque"],c:0,dica:"Caiu da cadeira e morreu ao saber da captura da arca."}
+],
+expert:[
+ {q:"Qual nome Deus revelou a Moisés na sarça ardente?",ref:"Êxodo 3:14",o:["Elohim","EU SOU O QUE SOU","Adonai","El Shaddai"],c:1,dica:"Em hebraico está ligado ao nome YHWH."},
+ {q:"Quantos anos viveu Matusalém?",ref:"Gênesis 5:27",o:["930","777","865","969"],c:3,dica:"O maior tempo de vida registrado na Bíblia."},
+ {q:"Qual profeta menor falou de gafanhotos e do 'dia do Senhor'?",ref:"Joel 1:4",o:["Amós","Joel","Naum","Obadias"],c:1,dica:"Pedro citou seu texto no Pentecostes."},
+ {q:"Qual era o rei de Israel quando Elias anunciou a seca?",ref:"1 Reis 17:1",o:["Jeroboão","Acabe","Onri","Jeú"],c:1,dica:"Era casado com Jezabel."},
+ {q:"Em qual livro do AT aparece 'o justo viverá pela fé'?",ref:"Habacuque 2:4",o:["Habacuque","Sofonias","Ageu","Naum"],c:0,dica:"Paulo cita em Romanos e Gálatas."},
+ {q:"Qual era o nome de Abraão antes de Deus mudá-lo?",ref:"Gênesis 17:5",o:["Abrão","Aram","Acabe","Abel"],c:0,dica:"'Pai exaltado' passou a 'pai de multidões'."},
+ {q:"Quantos livros compõem o Pentateuco?",ref:"",o:["3","5","7","12"],c:1,dica:"Os cinco primeiros livros, atribuídos a Moisés."},
+ {q:"Qual discípulo é chamado de 'o amado' no evangelho de João?",ref:"João 13:23",o:["Pedro","Tiago","João","André"],c:2,dica:"Tradicionalmente, o autor do evangelho."},
+ {q:"Qual rei da Pérsia autorizou a reconstrução do templo?",ref:"Esdras 1:1",o:["Dario","Ciro","Assuero","Artaxerxes"],c:1,dica:"Profetizado por Isaías muito antes de nascer."},
+ {q:"Qual era a profissão de Lucas, autor do terceiro evangelho?",ref:"Colossenses 4:14",o:["Médico","Tecelão","Pescador","Escriba"],c:0,dica:"Paulo o chama de 'o médico amado'."},
+ {q:"Quem foi o primeiro mártir da igreja cristã?",ref:"Atos 7:59",o:["Tiago","Estêvão","Barnabé","Paulo"],c:1,dica:"Apedrejado enquanto Saulo guardava as capas."},
+ {q:"Qual a primeira praga transformada por Moisés diante de Faraó?",ref:"Êxodo 7:20",o:["Trevas","Rãs","Água em sangue","Gafanhotos"],c:2,dica:"As águas do Nilo foram atingidas primeiro."},
+ {q:"Qual apóstolo escreveu 'combati o bom combate, acabei a carreira'?",ref:"2 Timóteo 4:7",o:["Pedro","Paulo","João","Judas"],c:1,dica:"Escrita pouco antes de seu martírio em Roma."},
+ {q:"O que significa o nome 'Emanuel'?",ref:"Mateus 1:23",o:["Deus salva","Deus conosco","Deus é forte","Príncipe da paz"],c:1,dica:"Profecia de Isaías cumprida em Jesus."},
+ {q:"Quantos anos durou a construção do templo de Salomão?",ref:"1 Reis 6:38",o:["3","7","10","20"],c:1,dica:"Concluído no oitavo mês do 11º ano."},
+ {q:"Quem foi o principal artesão encarregado de construir o tabernáculo?",ref:"Êxodo 31:2",o:["Bezalel","Aoliabe","Hirão","Hur"],c:0,dica:"Foi cheio do Espírito de Deus para a obra."},
+ {q:"O que havia dentro da Arca da Aliança, segundo Hebreus?",ref:"Hebreus 9:4",o:["Só as tábuas","As tábuas, o maná e a vara de Arão","Ouro e incenso","Os rolos da Lei"],c:1,dica:"Guardados como memorial."},
+ {q:"Quantas vezes por ano o sumo sacerdote entrava no Santo dos Santos?",ref:"Levítico 16:34",o:["Uma vez","Três vezes","Sete vezes","Toda semana"],c:0,dica:"No Dia da Expiação (Yom Kippur)."},
+ {q:"De quantos em quantos anos se celebrava o Jubileu?",ref:"Levítico 25:10",o:["7","10","40","50"],c:3,dica:"Terras voltavam aos donos e escravos eram libertos."},
+ {q:"Quem foi o pai de Abraão?",ref:"Gênesis 11:27",o:["Naor","Tera","Harã","Sem"],c:1,dica:"Saiu de Ur com a família."},
+ {q:"De qual cidade Abraão partiu por ordem de Deus?",ref:"Gênesis 11:31",o:["Harã","Ur dos caldeus","Siquém","Babel"],c:1,dica:"Rumo à terra de Canaã."},
+ {q:"Quem foi o rei-sacerdote de Salém que abençoou Abraão?",ref:"Gênesis 14:18",o:["Abimeleque","Melquisedeque","Faraó","Quedorlaomer"],c:1,dica:"Hebreus o compara a Cristo."},
+ {q:"Quantos anos Abraão tinha quando Isaque nasceu?",ref:"Gênesis 21:5",o:["75","90","100","120"],c:2,dica:"Sara tinha noventa anos."},
+ {q:"Quem foi a serva egípcia de Sara, mãe de Ismael?",ref:"Gênesis 16:1",o:["Quetura","Agar","Zilpa","Bila"],c:1,dica:"Fugiu ao deserto e foi achada por um anjo."},
+ {q:"Quem foram as duas esposas de Jacó?",ref:"Gênesis 29:28",o:["Sara e Agar","Lia e Raquel","Rebeca e Quetura","Mical e Abigail"],c:1,dica:"Filhas de Labão."},
+ {q:"Quantos anos Jacó serviu Labão para se casar com Raquel?",ref:"Gênesis 29:30",o:["7","10","14","20"],c:2,dica:"Sete por Lia e mais sete por Raquel."},
+ {q:"Em qual lugar Jacó sonhou com uma escada que chegava ao céu?",ref:"Gênesis 28:19",o:["Peniel","Betel","Siquém","Berseba"],c:1,dica:"Chamou o lugar de 'casa de Deus'."},
+ {q:"Em que lugar Jacó lutou e foi chamado Israel?",ref:"Gênesis 32:30",o:["Betel","Peniel","Maanaim","Gileade"],c:1,dica:"Disse: 'Vi a Deus face a face'."},
+ {q:"Que parte do corpo de Jacó foi ferida na luta com o anjo?",ref:"Gênesis 32:25",o:["O braço","A coxa (quadril)","O joelho","O ombro"],c:1,dica:"Passou a mancar a partir dali."},
+ {q:"Qual filho de Jacó recebeu a bênção do cetro real?",ref:"Gênesis 49:10",o:["Rúben","José","Judá","Levi"],c:2,dica:"'O cetro não se arredará de Judá'."},
+ {q:"Em que se transformou a mulher de Ló ao olhar para trás?",ref:"Gênesis 19:26",o:["Pedra","Estátua de sal","Árvore","Cinza"],c:1,dica:"Fugiam da destruição de Sodoma."},
+ {q:"Qual era o nome egípcio dado a José pelo faraó?",ref:"Gênesis 41:45",o:["Potífar","Zafenate-Panéia","Asenate","Manassés"],c:1,dica:"Recebeu também uma esposa egípcia."},
+ {q:"Qual o nome dado a Daniel na corte da Babilônia?",ref:"Daniel 1:7",o:["Beltessazar","Sadraque","Abede-Nego","Aspenaz"],c:0,dica:"Ligado ao nome do deus Bel."},
+ {q:"Quantos reinos a estátua do sonho de Nabucodonosor representava?",ref:"Daniel 2:38",o:["3","4","5","7"],c:1,dica:"Da cabeça de ouro aos pés de ferro e barro."},
+ {q:"Qual o último livro do Antigo Testamento?",ref:"",o:["Zacarias","Ageu","Malaquias","Joel"],c:2,dica:"Termina anunciando a vinda de Elias."},
+ {q:"Qual o menor livro do Antigo Testamento (em capítulos)?",ref:"",o:["Ageu","Obadias","Naum","Joel"],c:1,dica:"Tem um único capítulo, contra Edom."},
+ {q:"Em qual idioma a maior parte do Antigo Testamento foi escrita?",ref:"",o:["Grego","Hebraico","Aramaico","Latim"],c:1,dica:"Com pequenas porções em aramaico."},
+ {q:"Em qual idioma o Novo Testamento foi originalmente escrito?",ref:"",o:["Hebraico","Aramaico","Grego (koiné)","Latim"],c:2,dica:"A língua comum do mundo daquele tempo."},
+ {q:"Quantos livros tem a Bíblia protestante ao todo?",ref:"",o:["27","39","66","73"],c:2,dica:"39 no Antigo e 27 no Novo Testamento."},
+ {q:"Qual o outro nome de Mateus, o cobrador de impostos?",ref:"Marcos 2:14",o:["Levi","José","Cleopas","Natanael"],c:0,dica:"Filho de Alfeu."},
+ {q:"Qual apóstolo é identificado como Natanael no evangelho de João?",ref:"João 1:45",o:["Bartolomeu","Tadeu","Mateus","Simão"],c:0,dica:"Filipe o levou a Jesus."},
+ {q:"Quantos livros do Novo Testamento são atribuídos ao apóstolo João?",ref:"",o:["3","4","5","6"],c:2,dica:"Evangelho, três cartas e o Apocalipse."},
+ {q:"Quantos selos são abertos no livro do Apocalipse?",ref:"Apocalipse 6:1",o:["3","7","10","12"],c:1,dica:"O Cordeiro é digno de abri-los."},
+ {q:"Qual o número da besta em Apocalipse?",ref:"Apocalipse 13:18",o:["616","666","777","888"],c:1,dica:"'É o número de um homem'."},
+ {q:"Quantos portões tem a Nova Jerusalém?",ref:"Apocalipse 21:12",o:["7","10","12","24"],c:2,dica:"Com os nomes das doze tribos de Israel."},
+ {q:"Como termina o livro do Apocalipse (última oração)?",ref:"Apocalipse 22:20",o:["'Amém. Aleluia.'","'Vem, Senhor Jesus.'","'A graça seja convosco.'","'Santo, santo, santo.'"],c:1,dica:"O clamor pela volta de Cristo."},
+ {q:"Qual o nome do justo que aguardava a consolação de Israel e viu Jesus no templo?",ref:"Lucas 2:25",o:["Simeão","Zacarias","Eli","Gamaliel"],c:0,dica:"Tomou o menino nos braços e louvou a Deus."},
+ {q:"Qual o nome da profetisa idosa que viu o menino Jesus no templo?",ref:"Lucas 2:36",o:["Débora","Ana","Hulda","Miriã"],c:1,dica:"Filha de Fanuel, da tribo de Aser."},
+ {q:"Quem escreveu, tradicionalmente, o livro de Hebreus?",ref:"Hebreus",o:["Paulo","Autor não identificado","Pedro","Apolo"],c:1,dica:"O texto não nomeia seu autor."},
+ {q:"Qual a tradução grega do Antigo Testamento usada no tempo de Jesus?",ref:"",o:["Vulgata","Septuaginta","Peshitta","Targum"],c:1,dica:"Conhecida pela sigla LXX."},
+ {q:"Quantos anos, aproximadamente, separam Malaquias de João Batista?",ref:"",o:["100","200","400","700"],c:2,dica:"O chamado 'período interbíblico' de silêncio."},
+ {q:"Qual rei de Judá foi o mais ímpio, mas se arrependeu no cativeiro?",ref:"2 Crônicas 33:12",o:["Acaz","Manassés","Amom","Jeoaquim"],c:1,dica:"Reinou 55 anos, o mais longo de Judá."},
+ {q:"Qual profeta sacerdote teve visões de rodas e seres viventes no exílio?",ref:"Ezequiel 1:15",o:["Daniel","Ezequiel","Jeremias","Isaías"],c:1,dica:"Cativo junto ao rio Quebar."},
+ {q:"Quem foram os pais de João Batista?",ref:"Lucas 1:5",o:["José e Maria","Zacarias e Isabel","Joaquim e Ana","Eli e Ana"],c:1,dica:"Ambos eram avançados em idade."},
+ {q:"Qual sumo sacerdote profetizou, sem saber, que Jesus morreria pela nação?",ref:"João 11:49",o:["Anás","Caifás","Gamaliel","Zadoque"],c:1,dica:"Era o sumo sacerdote daquele ano."},
+ {q:"Quais a avó e a mãe de fé sincera elogiadas por Paulo a Timóteo?",ref:"2 Timóteo 1:5",o:["Loide e Eunice","Ana e Isabel","Noemi e Rute","Maria e Marta"],c:0,dica:"A fé passou de geração a geração."},
+ {q:"Qual filho de Davi nasceu de Bate-Seba e o sucedeu no trono?",ref:"2 Samuel 12:24",o:["Absalão","Adonias","Salomão","Amnom"],c:2,dica:"O Senhor o amou e o chamou Jedidias."},
+ {q:"Quem sustentou a arca e morreu ao tocá-la?",ref:"2 Samuel 6:7",o:["Obede-Edom","Uzá","Aziel","Quenanias"],c:1,dica:"A arca estava sendo transportada de modo indevido."},
+ {q:"Qual era o nome da cidade samaritana onde Jesus falou com a mulher no poço?",ref:"João 4:5",o:["Betesda","Sicar","Siloé","Enom"],c:1,dica:"Junto ao poço de Jacó."},
+ {q:"Quantos anos o paralítico de Betesda estava enfermo?",ref:"João 5:5",o:["12","30","38","40"],c:2,dica:"Esperava o mover das águas."},
+ {q:"Qual é o primeiro dos Dez Mandamentos?",ref:"Êxodo 20:3",o:["Não matarás","Não terás outros deuses diante de mim","Honra teu pai e tua mãe","Não roubarás"],c:1,dica:"Trata da exclusividade da adoração a Deus."},
+ {q:"Qual mandamento vem com promessa, segundo Paulo?",ref:"Efésios 6:2",o:["Não furtarás","Honra teu pai e tua mãe","Guarda o sábado","Não cobiçarás"],c:1,dica:"'Para que te vá bem e sejas de longa vida'."},
+ {q:"Quem era o sogro de Moisés, sacerdote de Midiã?",ref:"Êxodo 3:1",o:["Labão","Jetro (Reuel)","Hobabe","Balaque"],c:1,dica:"Aconselhou Moisés a delegar o julgamento."},
+ {q:"Qual era o nome da esposa de Moisés?",ref:"Êxodo 2:21",o:["Miriã","Zípora","Asenate","Quetura"],c:1,dica:"Filha do sacerdote de Midiã."},
+ {q:"Quem segurou os braços de Moisés para Israel vencer Amaleque?",ref:"Êxodo 17:12",o:["Josué e Calebe","Arão e Hur","Nadabe e Abiú","Eleazar e Itamar"],c:1,dica:"Enquanto as mãos estavam erguidas, venciam."},
+ {q:"Qual filho de Arão morreu por oferecer fogo estranho?",ref:"Levítico 10:1",o:["Eleazar","Nadabe","Itamar","Coré"],c:1,dica:"Junto com seu irmão Abiú."},
+ {q:"Quem se rebelou contra Moisés e foi tragado pela terra?",ref:"Números 16:32",o:["Balaão","Coré","Datã","Acã"],c:1,dica:"Junto a Datã e Abirão."},
+ {q:"Quem pecou em Jericó tomando o que era condenado?",ref:"Josué 7:1",o:["Acã","Acabe","Acaz","Acsa"],c:0,dica:"Escondeu uma capa, prata e ouro."},
+ {q:"Qual rei de Hazor foi derrotado por Josué no norte?",ref:"Josué 11:1",o:["Adoni-Zedeque","Jabim","Sísera","Eglom"],c:1,dica:"Liderava uma coalizão de reis."},
+ {q:"Qual foi o primeiro juiz de Israel?",ref:"Juízes 3:9",o:["Eúde","Otniel","Sangar","Baraque"],c:1,dica:"Sobrinho de Calebe."},
+ {q:"Qual rei de Judá destruiu a serpente de bronze tornada ídolo?",ref:"2 Reis 18:4",o:["Josias","Ezequias","Asa","Jeosafá"],c:1,dica:"O povo a chamava Neustã."},
+ {q:"Quem foi o profeta cujos ossos ressuscitaram um morto?",ref:"2 Reis 13:21",o:["Elias","Eliseu","Isaías","Natã"],c:1,dica:"Um cadáver reviveu ao tocar neles."},
+ {q:"Qual profeta andou descalço e nu por três anos como sinal?",ref:"Isaías 20:3",o:["Jeremias","Isaías","Ezequiel","Oseias"],c:1,dica:"Sinal contra Egito e Etiópia."},
+ {q:"Quem foi o escriba que escreveu as profecias ditadas por Jeremias?",ref:"Jeremias 36:4",o:["Esdras","Baruque","Seraías","Geazi"],c:1,dica:"Reescreveu o rolo queimado pelo rei."},
+ {q:"Qual profeta menor pregou a queda de Nínive, sem arrependimento?",ref:"Naum 1:1",o:["Jonas","Naum","Obadias","Sofonias"],c:1,dica:"Diferente de Jonas, aqui não há perdão."},
+ {q:"Qual a montanha onde Moisés recebeu a Lei, também chamada Horebe?",ref:"Êxodo 19:20",o:["Nebo","Sinai","Carmelo","Hermom"],c:1,dica:"Coberta de fumaça e fogo."},
+ {q:"Qual profeta de Tecoa confrontou o sacerdote Amazias em Betel?",ref:"Amós 7:12",o:["Oseias","Amós","Miqueias","Joel"],c:1,dica:"Pregava contra a injustiça social."},
+ {q:"Quem foi o pai de Noé?",ref:"Gênesis 5:28",o:["Enoque","Lameque","Matusalém","Jarede"],c:1,dica:"Profetizou que o filho traria alívio."},
+ {q:"A quantas pessoas Paulo diz que Cristo apareceu de uma vez após ressuscitar?",ref:"1 Coríntios 15:6",o:["120","mais de 500","cerca de 70","12"],c:1,dica:"A maioria ainda vivia quando ele escreveu."},
+ {q:"Qual mágico tentou comprar o dom do Espírito Santo?",ref:"Atos 8:18",o:["Bar-Jesus","Simão (o mago)","Elimas","Demétrio"],c:1,dica:"Dele vem o termo 'simonia'."},
+ {q:"Qual feiticeiro foi cegado por Paulo em Chipre?",ref:"Atos 13:8",o:["Simão","Elimas (Barjesus)","Demétrio","Alexandre"],c:1,dica:"O procônsul Sérgio Paulo então creu."},
+ {q:"Qual o nome da porta do templo onde Pedro curou o coxo?",ref:"Atos 3:2",o:["Formosa","Oriental","Das Ovelhas","Dourada"],c:0,dica:"O homem entrou andando e saltando."},
+ {q:"Qual apóstolo era conhecido como 'o zelote'?",ref:"Lucas 6:15",o:["Simão Pedro","Simão, o zelote","Judas Iscariotes","Tadeu"],c:1,dica:"Para distingui-lo de Simão Pedro."},
+ {q:"Qual era a relação entre Barnabé e João Marcos?",ref:"Colossenses 4:10",o:["Pai e filho","Primos","Irmãos","Mestre e servo"],c:1,dica:"Por isso Barnabé insistiu em levá-lo."},
+ {q:"Qual diaconisa da igreja de Cencreia foi elogiada por Paulo?",ref:"Romanos 16:1",o:["Priscila","Febe","Júnia","Cláudia"],c:1,dica:"Levou, segundo a tradição, a carta aos Romanos."},
+ {q:"Em que cidade Paulo deixou Trófimo doente?",ref:"2 Timóteo 4:20",o:["Mileto","Corinto","Éfeso","Trôade"],c:0,dica:"Citado entre seus últimos escritos."},
+ {q:"Qual o nome do anjo destruidor do abismo em Apocalipse?",ref:"Apocalipse 9:11",o:["Miguel","Apoliom (Abadom)","Gabriel","Belial"],c:1,dica:"Rei dos gafanhotos do abismo."},
+ {q:"Qual rei de Salém, sem genealogia, é símbolo do sacerdócio de Cristo?",ref:"Hebreus 7:3",o:["Arão","Melquisedeque","Zadoque","Eli"],c:1,dica:"'Sem pai, sem mãe, sem genealogia'."},
+ {q:"Qual profeta foi instruído a não pranteá a morte da esposa, como sinal?",ref:"Ezequiel 24:16",o:["Jeremias","Ezequiel","Oseias","Isaías"],c:1,dica:"Sinal do juízo iminente sobre Jerusalém."},
+ {q:"Qual o salmo mais longo, um acróstico sobre a Palavra de Deus?",ref:"Salmos 119:1",o:["Salmo 23","Salmo 51","Salmo 119","Salmo 150"],c:2,dica:"Tem 176 versículos, pelo alfabeto hebraico."},
+ {q:"Quem liderou a construção do segundo templo, após o exílio?",ref:"Esdras 6:15",o:["Salomão","Zorobabel","Herodes","Davi"],c:1,dica:"Concluído no reinado de Dario."},
+ {q:"Quantas asas tinham os quatro seres viventes em Apocalipse?",ref:"Apocalipse 4:8",o:["2","4","6","8"],c:2,dica:"Clamavam: 'Santo, santo, santo'."},
+ {q:"Quantos anciãos estavam ao redor do trono em Apocalipse?",ref:"Apocalipse 4:4",o:["12","24","70","144"],c:1,dica:"Vestidos de branco, com coroas de ouro."},
+ {q:"Quantos eram os 'selados' em Apocalipse, doze mil de cada tribo?",ref:"Apocalipse 7:4",o:["12.000","24.000","144.000","666.000"],c:2,dica:"Doze mil de cada uma das doze tribos."},
+ {q:"Qual o nome do anjo que anunciou nascimentos a Zacarias e a Maria?",ref:"Lucas 1:19",o:["Miguel","Gabriel","Rafael","Uriel"],c:1,dica:"'Eu assisto diante de Deus'."},
+ {q:"Qual arcanjo disputou com o diabo pelo corpo de Moisés?",ref:"Judas 1:9",o:["Miguel","Gabriel","Rafael","Uriel"],c:0,dica:"Disse: 'O Senhor te repreenda'."},
+ {q:"Qual moeda Jesus pediu para responder sobre o tributo a César?",ref:"Mateus 22:19",o:["Denário","Dracma","Talento","Siclo"],c:0,dica:"'De quem é esta imagem e inscrição?'"},
+ {q:"De onde Pedro tirou a moeda para pagar o imposto do templo?",ref:"Mateus 17:27",o:["De uma bolsa","Da boca de um peixe","Do chão","De Judas"],c:1,dica:"Jesus o mandou lançar o anzol."},
+ {q:"Quais dois homens apareceram com Jesus na transfiguração?",ref:"Mateus 17:3",o:["Abraão e Davi","Moisés e Elias","Enoque e Elias","Moisés e Josué"],c:1,dica:"Representam a Lei e os Profetas."},
+ {q:"Quem disse 'não tenho prata nem ouro, mas o que tenho te dou'?",ref:"Atos 3:6",o:["Paulo","Pedro","João","Estêvão"],c:1,dica:"Curou o coxo da porta Formosa."},
+ {q:"Quantas gerações há de Abraão a Cristo, em três grupos, segundo Mateus?",ref:"Mateus 1:17",o:["3 grupos de 7","3 grupos de 14","7 grupos de 7","12 grupos de 12"],c:1,dica:"Quatorze de Abraão a Davi, e assim por diante."},
+ {q:"Quem foi o homem arrebatado por andar com Deus, aos 365 anos?",ref:"Gênesis 5:23",o:["Matusalém","Enoque","Lameque","Jarede"],c:1,dica:"Não experimentou a morte."}
+]
+};
+
+/* ============================================================
+   ESTADO DE NAVEGAÇÃO
+   ============================================================ */
+const app=document.getElementById('app');
+let current=null;            // perfil ativo
+let quiz=null;               // estado da rodada
+const ROUND=10;              // perguntas por rodada
+let   QTIME=15;              // segundos por pergunta (ajustável pelo admin)
+const ERR_LIMIT=5;           // erros permitidos por rodada; o 6º zera o nível
+function getQTime(){const v=parseInt(store.get('qb_qtime'),10);return (v>=5&&v<=120)?v:15;}
+function setQTime(v){v=Math.max(5,Math.min(120,parseInt(v,10)||15));store.set('qb_qtime',String(v));QTIME=v;return v;}
+QTIME=getQTime();
+
+function flash(msg){const f=document.getElementById('flash');f.textContent=msg;f.classList.add('show');clearTimeout(f._t);f._t=setTimeout(()=>f.classList.remove('show'),1800)}
+function esc(s){return (s+'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---- troca de telas ---- */
+function show(html){app.innerHTML=html;const s=app.querySelector('.screen');requestAnimationFrame(()=>s&&s.classList.add('active'))}
+
+/* ============================================================
+   TELA: LOGIN / PERFIS
+   ============================================================ */
+function screenLogin(){
+  const has=data.profiles.length>0;
+  show(`
+  <div class="screen center pad active">
+    ${crestSVG()}
+    <div class="title-quiz">QUIZ</div>
+    <div class="title-bib">BÍBLICO</div>
+    <div class="eyebrow">QUEM ESTÁ JOGANDO?</div>
+    ${has?`<div class="profiles">${data.profiles.map(p=>`
+      <button class="pf" data-id="${p.id}">
+        <span class="av">${p.avatar}</span>
+        <span><b>${esc(p.name)}</b><small>${p.total} pontos • ${unlockedLabel(p)}</small></span>
+        <span class="chev">›</span>
+      </button>`).join('')}</div>`
+    :`<p class="sub" style="margin-top:6px">Nenhum jogador cadastrado ainda.<br>O administrador precisa cadastrar os jogadores.</p>`}
+    <button class="linkbtn" id="adminBtn" style="margin-top:18px">⚙ Área do administrador</button>
+    <p class="small-note">${NUVEM_ON?'Os pontos ficam salvos na nuvem e valem em qualquer aparelho da família.':'⚠ Nuvem ainda não configurada — rodando só neste aparelho.'}</p>
+  </div>`);
+  app.querySelectorAll('.pf').forEach(b=>b.onclick=()=>askPin(b.dataset.id));
+  document.getElementById('adminBtn').onclick=adminAuth;
+}
+function askPin(id){
+  const p=data.profiles.find(x=>x.id===id);if(!p)return;
+  show(`
+  <div class="screen center pad active">
+    <button class="back" id="bk" style="position:absolute;left:14px;top:14px">‹</button>
+    <div class="av" style="width:84px;height:84px;font-size:42px;margin:34px auto 8px">${p.avatar}</div>
+    <div class="h2" style="text-align:center">${esc(p.name)}</div>
+    <div class="eyebrow">DIGITE SEU PIN</div>
+    <input class="field pin" id="pin" type="password" inputmode="numeric" maxlength="4" placeholder="••••" autocomplete="off">
+    <button class="btn btn-green" id="ok" style="margin-top:14px">Entrar</button>
+  </div>`);
+  const inp=document.getElementById('pin');setTimeout(()=>inp.focus(),60);
+  document.getElementById('bk').onclick=screenLogin;
+  const tryEnter=async()=>{
+    const pin=inp.value.trim();
+    if(pin.length<4){flash('Digite os 4 dígitos do PIN');return}
+    const h=await hashPin(p.name,pin);
+    if(h===p.pin_hash){enter(p.id);}else{flash('PIN incorreto');inp.value='';inp.focus();}
+  };
+  document.getElementById('ok').onclick=tryEnter;
+  inp.onkeydown=e=>{if(e.key==='Enter')tryEnter()};
+}
+function enter(id){current=data.profiles.find(p=>p.id===id);data.lastId=id;decks={};salvarCacheLocal();screenMenu()}
+
+/* ============================================================
+   ADMIN — cadastro e gestão dos jogadores (só o administrador)
+   ============================================================ */
+function adminAuth(){
+  show(`
+  <div class="screen center pad active">
+    <button class="back" id="bk" style="position:absolute;left:14px;top:14px">‹</button>
+    <div class="title-quiz" style="font-size:30px;margin-top:30px">ADMIN</div>
+    <div class="eyebrow">SENHA DO ADMINISTRADOR</div>
+    <input class="field pin" id="ap" type="password" inputmode="numeric" maxlength="8" placeholder="senha" autocomplete="off" style="letter-spacing:6px">
+    <button class="btn btn-green" id="ok" style="margin-top:14px">Entrar</button>
+  </div>`);
+  const inp=document.getElementById('ap');setTimeout(()=>inp.focus(),60);
+  document.getElementById('bk').onclick=screenLogin;
+  const go=()=>{if(inp.value===String(ADMIN_PIN)){screenAdmin();}else{flash('Senha incorreta');inp.value=''}};
+  document.getElementById('ok').onclick=go;
+  inp.onkeydown=e=>{if(e.key==='Enter')go()};
+}
+function pageShellPlain(inner){show(`<div class="screen active" style="display:flex;flex-direction:column;height:100%"><div style="flex:1;overflow-y:auto" class="pad">${inner}</div></div>`);}
+function screenAdmin(){
+  pageShellPlain(`
+    <div class="h2">Administrador</div>
+    <div class="sub">Cadastre e gerencie os jogadores da família</div>
+    <div class="cfg" style="display:block">
+      <div style="font-weight:600;margin-bottom:8px">⏱ Tempo por pergunta</div>
+      <div class="timeopts" id="timeopts">
+        ${[10,15,20,30,45].map(t=>`<button class="mini timeopt${getQTime()===t?' on':''}" data-t="${t}">${t}s</button>`).join('')}
+      </div>
+      <div class="sub" style="font-size:11px;margin-top:6px">Vale neste aparelho. (Atual: ${getQTime()}s)</div>
+    </div>
+    <button class="btn btn-green" id="novo" style="margin:6px 0 14px">+ Cadastrar novo jogador</button>
+    <div id="novoBox"></div>
+    ${data.profiles.length?data.profiles.map(p=>`
+      <div class="cfg adminrow">
+        <span>${p.avatar} <b>${esc(p.name)}</b><br><small style="color:#8a93b8">${p.total} pts • ${totalAcertos(p)} acertos${venceu(p)?' 🏆':''}</small></span>
+        <span class="adminacts">
+          <button class="mini" data-pin="${p.id}">PIN</button>
+          <button class="mini" data-zero="${p.id}">Zerar</button>
+          <button class="mini del" data-del="${p.id}">Excluir</button>
+        </span>
+      </div>`).join(''):`<div class="empty">Nenhum jogador ainda. Cadastre o primeiro acima.</div>`}
+    <button class="btn btn-dark" id="voltar" style="margin-top:16px">‹ Voltar ao login</button>
+  `);
+  app.querySelectorAll('.timeopt').forEach(b=>b.onclick=()=>{setQTime(b.dataset.t);flash('Tempo definido para '+b.dataset.t+'s');screenAdmin();});
+  document.getElementById('voltar').onclick=screenLogin;
+  document.getElementById('novo').onclick=adminFormNovo;
+  app.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{
+    const p=data.profiles.find(x=>x.id===b.dataset.del);
+    if(confirm('Excluir o jogador '+p.name+'? Os pontos dele serão perdidos.')){
+      try{await removerJogador(p.id);flash('Jogador excluído')}catch(e){flash('Erro: '+e.message)}screenAdmin();
+    }
+  });
+  app.querySelectorAll('[data-zero]').forEach(b=>b.onclick=async()=>{
+    const p=data.profiles.find(x=>x.id===b.dataset.zero);
+    if(confirm('Zerar os pontos de '+p.name+'?')){p.total=0;p.perLevel={};p.peak=0;try{await salvarPontos(p)}catch(e){}flash('Pontos zerados');screenAdmin();}
+  });
+  app.querySelectorAll('[data-pin]').forEach(b=>b.onclick=()=>{
+    const p=data.profiles.find(x=>x.id===b.dataset.pin);
+    const np=prompt('Novo PIN de 4 dígitos para '+p.name+':');
+    if(np==null)return;
+    if(/^\d{4}$/.test(np)){definirPin(p,np).then(()=>flash('PIN atualizado')).catch(e=>flash('Erro: '+e.message));}
+    else{flash('O PIN deve ter 4 dígitos')}
+  });
+}
+function adminFormNovo(){
+  const avs=['🦁','🐑','🕊️','⭐','🐠','🌿','👑','📖','🛡️','🐝','🦋','🌟'];
+  let av=avs[0];
+  const box=document.getElementById('novoBox');
+  box.innerHTML=`
+    <input class="field" id="nm" placeholder="Nome do jogador" maxlength="18" autocomplete="off">
+    <div class="avgrid">${avs.map((a,i)=>`<button class="avbtn${i===0?' on':''}" data-a="${a}">${a}</button>`).join('')}</div>
+    <input class="field pin" id="np" type="password" inputmode="numeric" maxlength="4" placeholder="PIN de 4 dígitos" autocomplete="off" style="letter-spacing:6px">
+    <button class="btn btn-green" id="salvar" style="margin-top:8px">Salvar jogador</button>`;
+  box.querySelectorAll('.avbtn').forEach(b=>b.onclick=()=>{box.querySelectorAll('.avbtn').forEach(x=>x.classList.remove('on'));b.classList.add('on');av=b.dataset.a});
+  box.querySelector('#salvar').onclick=async()=>{
+    const nm=box.querySelector('#nm').value.trim();
+    const pin=box.querySelector('#np').value.trim();
+    if(!nm){flash('Digite um nome');return}
+    if(!/^\d{4}$/.test(pin)){flash('O PIN deve ter 4 dígitos');return}
+    try{await criarJogador(nm,av,pin);flash('Jogador cadastrado!');screenAdmin();}
+    catch(e){
+      const msg=(e&&e.message||'')+'';
+      if(/not.*find|does not exist|404|relation|schema/i.test(msg))
+        flash('A tabela "jogadores" não foi encontrada no Supabase. Rode o SQL (passo 2) no mesmo projeto.');
+      else flash('Erro ao salvar: '+msg);
+    }
+  };
+}
+function unlockedLabel(p){
+  let u=0;LEVELS.forEach(l=>{if(levelUnlocked(p,l))u++});
+  return lvlByKey(LEVELS[Math.max(0,u-1)].key).nome.charAt(0)+lvlByKey(LEVELS[Math.max(0,u-1)].key).nome.slice(1).toLowerCase();
+}
+
+/* ============================================================
+   TELA: MENU (escolher nível) + NAV
+   ============================================================ */
+function screenMenu(){
+  show(`
+  <div class="screen active" style="display:flex;flex-direction:column;height:100%">
+    <div style="flex:1;overflow-y:auto">
+      <div class="topbar">
+        <div class="chip"><span class="av">${current.avatar}</span><span><b>${esc(current.name)}${venceu(current)?' 🏆':''}</b><small>${current.total} PTS • ${totalAcertos(current)} ACERTOS</small></span></div>
+        <button class="linkbtn" id="logout">Trocar</button>
+      </div>
+      <div class="center pad" style="padding-top:10px">
+        ${crestSVG(64)}
+        <div class="title-quiz" style="font-size:38px">QUIZ</div>
+        <div class="title-bib" style="font-size:24px">BÍBLICO</div>
+        <div class="eyebrow">ESCOLHA SEU NÍVEL</div>
+        ${venceu(current)?`<p class="small-note" style="color:var(--gold-soft);font-weight:700;margin:0 0 6px">🏆 Você venceu o Quiz Bíblico! Continue jogando para somar mais pontos.</p>`:''}
+        <div class="levels">
+          ${LEVELS.map((l,idx)=>{
+            const locked=!levelUnlocked(current,l);
+            const prev=LEVELS[idx-1];
+            const feito=getAc(current,l.key);
+            const ehUltimo=idx===LEVELS.length-1;
+            const progresso=locked?''
+              :`<div class="tag-prog">${feito}/${l.meta} acertos ${feito>=l.meta?(ehUltimo?'🏆 venceu!':'✓ próximo liberado'):(ehUltimo?'para vencer':'para o próximo nível')}</div>`;
+            return `<div class="lvl ${locked?'locked':''}" data-k="${l.key}">
+              <span class="ic ${l.cls}">${levelIcon(l.key)}</span>
+              <span class="tx"><h3>${l.nome}</h3><p>${l.desc}</p>
+                ${locked?`<div class="tag-need">🔒 Libera com ${prev?prev.meta:0} acertos no ${prev?prev.nome:''}</div>`:progresso}</span>
+              ${locked?'<span class="lock">🔒</span>':'<span class="chev">›</span>'}
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>
+    ${navBar('jogar')}
+  </div>`);
+  bindNav();
+  document.getElementById('logout').onclick=()=>{current=null;screenLogin()};
+  app.querySelectorAll('.lvl').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('locked')){flash('Some mais pontos para liberar este nível');return}
+    startQuiz(b.dataset.k);
+  });
+}
+
+/* ============================================================
+   TELA: QUIZ
+   ============================================================ */
+/* baralho de perguntas por nível: distribui sem repor; re-embaralha só quando acaba */
+let decks={};
+function drawRound(key){
+  const pool=QUESTIONS[key];
+  if(!decks[key]||decks[key].length<ROUND){
+    decks[key]=shuffle(pool.map((_,i)=>i));   // novo baralho embaralhado (sem repetição interna)
+  }
+  return decks[key].splice(0,ROUND).map(i=>pool[i]);
+}
+function startQuiz(key){
+  QTIME=getQTime();          // aplica o tempo definido pelo admin
+  const pool=drawRound(key).map(qq=>{         // 10 perguntas sem repetir até esgotar o nível
+    const opts=qq.o.map((t,i)=>({t,correct:i===qq.c}));
+    const sh=shuffle(opts);
+    return {q:qq.q,ref:qq.ref,dica:qq.dica,opts:sh,answer:sh.findIndex(o=>o.correct)};
+  });
+  quiz={key,pool,i:0,acertos:0,erros:0,pontos:0,times:[],hints:2,plus:2,answered:false,time:QTIME,acStart:getAc(current,key)};
+  renderQuestion();
+}
+function renderQuestion(){
+  const l=lvlByKey(quiz.key),qq=quiz.pool[quiz.i];
+  quiz.time=QTIME;quiz.answered=false;quiz.tStart=Date.now();
+  show(`
+  <div class="screen active">
+    <div class="qhead">
+      <button class="back" id="qback">‹</button>
+      <span class="lvlname">NÍVEL: ${l.nome}</span>
+      <span class="count"><span class="qscore">⭐ ${current.total+quiz.pontos}</span> <b>${quiz.i+1}</b>/${ROUND}</span>
+    </div>
+    <div class="lives" id="lives" title="Você pode errar até ${ERR_LIMIT} vezes">
+      ${Array.from({length:ERR_LIMIT}).map((_,i)=>`<span class="hrt${i<(ERR_LIMIT-quiz.erros)?'':' off'}">${i<(ERR_LIMIT-quiz.erros)?'❤️':'🤍'}</span>`).join('')}
+      <span class="lives-lbl">VIDAS</span>
+    </div>
+    <div class="levelprog">
+      <span>✓ ${getAc(current,quiz.key)}/${l.meta} acertos neste nível para liberar o próximo</span>
+      <div class="lptrack"><div class="lpfill" style="width:${Math.min(100,getAc(current,quiz.key)/l.meta*100)}%"></div></div>
+    </div>
+    <div class="timerwrap">
+      <div class="ring">
+        <svg width="78" height="78"><circle cx="39" cy="39" r="33" stroke="rgba(255,255,255,.12)" stroke-width="6" fill="none"/>
+        <circle id="ringfg" cx="39" cy="39" r="33" stroke="${l.cor}" stroke-width="6" fill="none" stroke-linecap="round"
+          stroke-dasharray="${2*Math.PI*33}" stroke-dashoffset="0"/></svg>
+        <div class="num"><b id="secs">${QTIME}</b><span>SEG</span></div>
+      </div>
+      <div class="timerlabel">⏱ TEMPO<br>RESTANTE</div>
+    </div>
+    <div class="qcard">
+      <div class="quote">&ldquo;</div>
+      <p class="qtext">${esc(qq.q)}</p>
+      ${qq.ref?`<div class="qref">${esc(qq.ref)}</div>`:''}
+      <div class="opts" id="opts">
+        ${qq.opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="letter">${'ABCD'[i]}</span><span>${esc(o.t)}</span></button>`).join('')}
+      </div>
+    </div>
+    <div class="lifebar">
+      <button class="life" id="dica" ${quiz.hints<=0?'disabled':''}>${bulbSVG}<span>DICA</span><span class="badge">${quiz.hints}</span></button>
+      <button class="life" id="pular">${skipSVG}<span>PULAR</span></button>
+      <button class="life" id="plus" ${quiz.plus<=0?'disabled':''}>${clockSVG}<span>+5 SEGUNDOS</span><span class="badge">${quiz.plus}</span></button>
+    </div>
+  </div>`);
+  document.getElementById('qback').onclick=()=>{stopTimer();persist();screenMenu()};
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  document.getElementById('pular').onclick=()=>{quiz.times.push(QTIME);next()};
+  document.getElementById('dica').onclick=useHint;
+  document.getElementById('plus').onclick=usePlus;
+  startTimer();
+}
+let timer=null;
+function startTimer(){
+  const fg=document.getElementById('ringfg'),circ=2*Math.PI*33;
+  stopTimer();
+  timer=setInterval(()=>{
+    quiz.time-=0.1;
+    if(quiz.time<=0){quiz.time=0;stopTimer();timeUp();return}
+    document.getElementById('secs').textContent=Math.ceil(quiz.time);
+    fg.style.strokeDashoffset=circ*(1-quiz.time/QTIME);
+  },100);
+}
+function stopTimer(){if(timer){clearInterval(timer);timer=null}}
+function useHint(){
+  if(quiz.hints<=0||quiz.answered)return;
+  const qq=quiz.pool[quiz.i];const wrong=qq.opts.map((o,i)=>i).filter(i=>i!==qq.answer);
+  shuffle(wrong).slice(0,2).forEach(i=>{const b=app.querySelector(`.opt[data-i="${i}"]`);b.classList.add('dim');b.disabled=true});
+  quiz.hints--;const d=document.getElementById('dica');d.querySelector('.badge').textContent=quiz.hints;if(quiz.hints<=0)d.disabled=true;
+}
+function usePlus(){
+  if(quiz.plus<=0||quiz.answered)return;
+  quiz.time=Math.min(QTIME,quiz.time+5);quiz.plus--;
+  const p=document.getElementById('plus');p.querySelector('.badge').textContent=quiz.plus;if(quiz.plus<=0)p.disabled=true;
+  flash('+5 segundos');
+}
+function timeUp(){quiz.erros++;updateLives();quiz.times.push(QTIME);const qq=quiz.pool[quiz.i];const c=app.querySelector(`.opt[data-i="${qq.answer}"]`);if(c)c.classList.add('correct');flash('Tempo esgotado!');quiz.answered=true;setTimeout(next,1100)}
+function answer(i){
+  if(quiz.answered)return;quiz.answered=true;stopTimer();
+  const qq=quiz.pool[quiz.i];const used=(Date.now()-quiz.tStart)/1000;quiz.times.push(Math.min(QTIME,used));
+  app.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  if(i===qq.answer){
+    app.querySelector(`.opt[data-i="${i}"]`).classList.add('correct');
+    const bonus=Math.max(0,Math.round((QTIME-used)*4));
+    const gained=60+bonus;quiz.pontos+=gained;quiz.acertos++;
+    addAc(current,quiz.key,1);   // conta o acerto na hora; trava ao atingir a meta do nível
+  }else{
+    app.querySelector(`.opt[data-i="${i}"]`).classList.add('wrong');
+    app.querySelector(`.opt[data-i="${qq.answer}"]`).classList.add('correct');
+    quiz.erros++;updateLives();
+  }
+  setTimeout(next,1100);
+}
+function next(){
+  stopTimer();
+  if(quiz.erros>ERR_LIMIT){bustLevel();return;}   // 6º erro → zera o nível
+  if(quiz.i<quiz.pool.length-1){quiz.i++;renderQuestion();}
+  else finishQuiz();
+}
+function updateLives(){
+  const box=document.getElementById('lives');if(!box)return;
+  const left=Math.max(0,ERR_LIMIT-quiz.erros);
+  const hrts=box.querySelectorAll('.hrt');
+  hrts.forEach((h,i)=>{const alive=i<left;h.textContent=alive?'❤️':'🤍';h.classList.toggle('off',!alive)});
+  const lost=hrts[left];if(lost){lost.classList.add('pop');setTimeout(()=>lost.classList.remove('pop'),200)}
+}
+function bustLevel(){
+  stopTimer();
+  const key=quiz.key;
+  const perdidos=current.perLevel[key]||0;
+  current.perLevel[key]=0;                 // perde só os pontos deste nível
+  // os acertos do nível já foram contados ao vivo durante a rodada e não se perdem
+  recomputeTotal(current);
+  current.history.push({key,pontos:0,acertos:quiz.acertos,erros:quiz.erros,busted:true,date:Date.now()});
+  persist();
+  screenBust(key,perdidos);
+}
+function screenBust(key,perdidos){
+  const l=lvlByKey(key);
+  show(`
+  <div class="screen res active center">
+    <div class="pad" style="padding-top:28px;width:100%">
+      <div class="crown" style="filter:grayscale(1)">💔</div>
+      <div class="parabens" style="color:var(--bad)">QUE PENA!</div>
+      <div class="subdone">Você atingiu o limite de ${ERR_LIMIT} erros no nível ${l.nome}</div>
+      ${shieldSVG(l,0)}
+      <p class="small-note" style="margin-top:14px">
+        Você perdeu os <b style="color:var(--bad)">${perdidos} pontos</b> acumulados deste nível.<br>
+        Os pontos dos outros níveis foram mantidos.<br>
+        Total agora: <b style="color:var(--gold-soft)">${current.total} pontos</b>
+      </p>
+      <div class="actions">
+        <button class="btn btn-green" id="retry">↻  COMEÇAR O NÍVEL DE NOVO</button>
+        <button class="btn btn-dark" id="tomenu">🏠  VOLTAR AO MENU</button>
+      </div>
+    </div>
+  </div>`);
+  document.getElementById('retry').onclick=()=>startQuiz(key);
+  document.getElementById('tomenu').onclick=screenMenu;
+}
+
+/* ============================================================
+   FIM DA RODADA — salva e mostra resultado
+   ============================================================ */
+function finishQuiz(){
+  const l=quiz.key, Lobj=lvlByKey(l);
+  current.perLevel[l]=(current.perLevel[l]||0)+quiz.pontos;   // ACUMULA o cofre de pontos do nível
+  const antes=quiz.acStart;                                   // acertos do nível ANTES desta rodada
+  const depois=getAc(current,l);                              // já atualizados ao vivo durante a rodada
+  recomputeTotal(current);
+  current.history.push({key:l,pontos:quiz.pontos,acertos:quiz.acertos,erros:quiz.erros,date:Date.now()});
+  const idx=LEVELS.findIndex(x=>x.key===l);
+  const nextL=LEVELS[idx+1];
+  const cruzouMeta=antes<Lobj.meta&&depois>=Lobj.meta;
+  const desbloqueou=nextL&&cruzouMeta?nextL:null;            // liberou o próximo nível
+  const novaVitoria=!nextL&&cruzouMeta;                       // expert atingiu a meta = venceu
+  persist();
+  screenResults(desbloqueou,novaVitoria);
+}
+function screenResults(unlocked,novaVitoria){
+  const l=lvlByKey(quiz.key);
+  const avg=quiz.times.length?Math.round(quiz.times.reduce((a,b)=>a+b,0)/quiz.times.length):0;
+  // proxima fase
+  const idx=LEVELS.findIndex(x=>x.key===quiz.key);
+  const nextL=LEVELS[idx+1];
+  const canNext=nextL&&levelUnlocked(current,nextL);
+  // barra de progresso por nível (melhor pontuação por nível)
+  show(`
+  <div class="screen res active center">
+    <div class="confetti" id="cf"></div>
+    <div class="pad" style="padding-top:18px;width:100%">
+      <div class="crown">👑</div>
+      <div class="parabens">PARABÉNS!</div>
+      <div class="subdone">Você concluiu esta rodada de ${l.nome}</div>
+      ${shieldSVG(l,quiz.pontos)}
+      <p class="small-note" style="margin-top:10px">
+        +${quiz.pontos} pontos nesta rodada • <b style="color:var(--good)">${quiz.acertos} acertos</b><br>
+        Pontos acumulados no ${l.nome}: <b style="color:var(--gold-soft)">${current.perLevel[quiz.key]||0}</b><br>
+        ${getAc(current,quiz.key)>=l.meta
+          ?`Acertos no ${l.nome}: <b style="color:var(--good)">${l.meta}/${l.meta} ✓</b> ${nextL?'— nível concluído!':'— você venceu!'}`
+          :`Acertos no ${l.nome}: <b style="color:var(--gold-soft)">${getAc(current,quiz.key)}</b> / ${l.meta} ${nextL?'para liberar o próximo nível':'para vencer'}`}
+      </p>
+      <div class="stats3">
+        <div class="st">${checkSVG}<b style="color:var(--good)">${quiz.acertos}</b><small>Acertos</small></div>
+        <div class="st sep">${xSVG}<b style="color:var(--bad)">${quiz.erros}</b><small>Erros</small></div>
+        <div class="st">${clockBlueSVG}<b style="color:#6fa8ff">${avg<10?'0':''}${avg}s</b><small>Tempo médio</small></div>
+      </div>
+      <div class="progblock">
+        <div class="progtitle">SEU PROGRESSO</div>
+        <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
+        <div class="dots">
+          ${LEVELS.map(L=>{
+            const reached=levelUnlocked(current,L);
+            return `<div class="dotwrap">
+              <span class="dot ${reached?'on':''}" style="${reached?'background:'+L.cor:''}">${levelIcon(L.key,14)}</span>
+              <small>${L.nome}</small>
+              <b style="color:${reached?'var(--gold-soft)':'#5b6398'}">${getAc(current,L.key)}/${L.meta}</b>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+      ${novaVitoria
+        ?`<p class="small-note" style="color:var(--gold-soft);font-weight:700;font-size:14px;margin-top:16px">🏆 PARABÉNS! Você venceu o Quiz Bíblico!</p>`
+        :(unlocked?`<p class="small-note" style="color:var(--gold-soft);font-weight:600;margin-top:16px">🎉 Você desbloqueou o nível ${unlocked.nome}!</p>`:'')}
+      <div class="actions">
+        ${canNext?`<button class="btn btn-green" id="nextlvl">▶  PRÓXIMO NÍVEL</button>`:
+          `<button class="btn btn-green" id="again">▶  JOGAR MAIS NESTE NÍVEL</button>`}
+        <button class="btn btn-dark" id="tomenu">🏠  VOLTAR AO MENU</button>
+      </div>
+    </div>
+  </div>`);
+  // animações — a barra enche só até o nível em que a pessoa está (não ultrapassa o próximo ponto travado)
+  let g=LEVELS.findIndex(L=>getAc(current,L.key)<L.meta);
+  let pct;
+  if(g===-1){pct=100;}  // todos os níveis concluídos = venceu
+  else{const frac=Math.min(1,getAc(current,LEVELS[g].key)/LEVELS[g].meta);pct=Math.min(100,Math.round((g+frac)/(LEVELS.length-1)*100));}
+  requestAnimationFrame(()=>{document.getElementById('fill').style.width=pct+'%'});
+  confetti();
+  const nb=document.getElementById('nextlvl');if(nb)nb.onclick=()=>startQuiz(nextL.key);
+  const ag=document.getElementById('again');if(ag)ag.onclick=()=>startQuiz(quiz.key);
+  document.getElementById('tomenu').onclick=screenMenu;
+}
+function confetti(){
+  const box=document.getElementById('cf');if(!box)return;
+  const cols=['#e6c158','#39b865','#2d7ff9','#8b5cf6','#e0801a','#fff'];
+  for(let i=0;i<46;i++){
+    const c=document.createElement('div');c.className='conf';
+    c.style.left=Math.random()*100+'%';
+    c.style.background=cols[i%cols.length];
+    c.style.animationDuration=(1.6+Math.random()*1.6)+'s';
+    c.style.animationDelay=(Math.random()*0.6)+'s';
+    box.appendChild(c);
+  }
+}
+
+/* ============================================================
+   NAV: RANKING / CONQUISTAS / ESTATÍSTICAS / CONFIG
+   ============================================================ */
+function navBar(active){
+  const items=[
+    ['jogar','Jogar',homeSVG],['ranking','Ranking',trophySVG],
+    ['conquistas','Conquistas',medalSVG],['estatisticas','Estatísticas',barSVG],
+    ['config','Config',gearSVG]
+  ];
+  return `<div class="nav">${items.map(([k,n,svg])=>`<button class="${k===active?'on':''}" data-nav="${k}">${svg}<span>${n}</span></button>`).join('')}</div>`;
+}
+function bindNav(){app.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>route(b.dataset.nav))}
+function route(k){
+  if(k==='jogar')screenMenu();
+  else if(k==='ranking')screenRanking();
+  else if(k==='conquistas')screenConquistas();
+  else if(k==='estatisticas')screenStats();
+  else if(k==='config')screenConfig();
+}
+function pageShell(active,inner){
+  show(`<div class="screen active" style="display:flex;flex-direction:column;height:100%">
+    <div style="flex:1;overflow-y:auto" class="pad">${inner}</div>${navBar(active)}</div>`);
+  bindNav();
+}
+async function screenRanking(){
+  if(sb){try{const r=await sb.from('jogadores').select('*').order('total',{ascending:false});if(!r.error){data.profiles=(r.data||[]).map(rowToProfile);normalizeProfiles();if(current)current=data.profiles.find(p=>p.id===current.id)||current;salvarCacheLocal();}}catch(e){}}
+  const sorted=data.profiles.slice().sort((a,b)=>b.total-a.total);
+  pageShell('ranking',`
+    <div class="h2">Ranking da Família</div>
+    <div class="sub">Quem mais conhece a Palavra?</div>
+    ${sorted.length?sorted.map((p,i)=>`
+      <div class="row">
+        <span class="pos">${['🥇','🥈','🥉'][i]||(i+1)}</span>
+        <span class="av">${p.avatar}</span>
+        <span class="nm"><b>${esc(p.name)}${p.id===current.id?' (você)':''}</b><small>${unlockedLabel(p)}</small></span>
+        <span class="sc">${p.total}</span>
+      </div>`).join(''):`<div class="empty">Ainda não há jogadores suficientes.</div>`}
+  `);
+}
+function screenConquistas(){
+  const h=current.history;const totalQuizzes=h.length;
+  const perfect=h.some(x=>x.erros===0&&x.acertos>0);
+  const ach=[
+    ['🌱','Primeiros passos','Complete sua primeira rodada',totalQuizzes>=1],
+    ['📖','Estudioso','Complete 5 rodadas',totalQuizzes>=5],
+    ['🎯','Memória de elefante','Acerte uma rodada inteira sem erros',perfect],
+    ['🔵','Liberou o Médio','Faça 20 acertos no Iniciante',getAc(current,'iniciante')>=20],
+    ['👑','Liberou o Intermediário','Faça 30 acertos no Médio',getAc(current,'medio')>=30],
+    ['🛡️','Liberou o Expert','Faça 40 acertos no Intermediário',getAc(current,'intermediario')>=40],
+    ['🏆','Campeão da Palavra','Faça 50 acertos no Expert e vença',getAc(current,'expert')>=50],
+  ];
+  pageShell('conquistas',`
+    <div class="h2">Conquistas</div>
+    <div class="sub">${ach.filter(a=>a[3]).length} de ${ach.length} desbloqueadas</div>
+    ${ach.map(a=>`<div class="ach ${a[3]?'':'locked'}"><span class="em">${a[3]?a[0]:'🔒'}</span><span><b>${a[1]}</b><small>${a[2]}</small></span></div>`).join('')}
+  `);
+}
+function screenStats(){
+  const h=current.history;
+  const ac=h.reduce((s,x)=>s+x.acertos,0),er=h.reduce((s,x)=>s+x.erros,0);
+  const tot=ac+er;const taxa=tot?Math.round(ac/tot*100):0;
+  pageShell('estatisticas',`
+    <div class="h2">Estatísticas</div>
+    <div class="sub">${esc(current.name)}</div>
+    <div class="statgrid">
+      <div class="statbox"><b>${current.total}</b><small>PONTOS TOTAIS</small></div>
+      <div class="statbox"><b>${h.length}</b><small>RODADAS JOGADAS</small></div>
+      <div class="statbox"><b>${ac}</b><small>ACERTOS</small></div>
+      <div class="statbox"><b>${taxa}%</b><small>APROVEITAMENTO</small></div>
+    </div>
+    <div class="progtitle" style="margin:14px 0 10px">PONTOS ACUMULADOS POR NÍVEL</div>
+    ${LEVELS.map(L=>`<div class="cfg"><span>${levelIcon(L.key,16)} ${L.nome}</span><b style="color:var(--gold-soft)">${current.perLevel[L.key]!=null?current.perLevel[L.key]:'—'}</b></div>`).join('')}
+  `);
+}
+function screenConfig(){
+  const sound=store.get('qb_sound')!=='off';
+  pageShell('config',`
+    <div class="h2">Configurações</div>
+    <div class="sub">${esc(current.name)}</div>
+    <div class="cfg"><span>🔊 Sons (em breve)</span><div class="toggle ${sound?'on':''}" id="tgSound"></div></div>
+    <div class="cfg" id="resetP" style="cursor:pointer"><span>🔄 Zerar pontos deste jogador</span><span style="color:#9fb0d0">›</span></div>
+    <div class="cfg" id="switch" style="cursor:pointer"><span>👥 Trocar de jogador</span><span style="color:#9fb0d0">›</span></div>
+    <p class="small-note">Quiz Bíblico • versão 1.0<br>Feito para a Igreja Vidas 💛</p>
+  `);
+  document.getElementById('tgSound').onclick=function(){this.classList.toggle('on');store.set('qb_sound',this.classList.contains('on')?'on':'off')};
+  document.getElementById('switch').onclick=()=>{current=null;screenLogin()};
+  document.getElementById('resetP').onclick=()=>{
+    if(confirm('Zerar todos os pontos de '+current.name+'?')){current.total=0;current.perLevel={};current.peak=0;current.history=[];persist();flash('Pontos zerados');screenConfig()}
+  };
+}
+
+/* ============================================================
+   ÍCONES / SVGs
+   ============================================================ */
+function crestSVG(size=84){return `<svg class="crest" width="${size}" height="${size}" viewBox="0 0 100 100" fill="none">
+  <g stroke="#e6c158" stroke-width="3" stroke-linecap="round">
+    <line x1="50" y1="14" x2="50" y2="40"/><line x1="40" y1="22" x2="60" y2="22"/>
+    <line x1="50" y1="8" x2="50" y2="14"/>
+    <g opacity=".85"><line x1="30" y1="30" x2="24" y2="26"/><line x1="70" y1="30" x2="76" y2="26"/><line x1="50" y1="6" x2="50" y2="2"/></g>
+  </g>
+  <path d="M20 50 Q50 42 50 48 Q50 42 80 50 L80 78 Q50 70 50 76 Q50 70 20 78 Z" fill="#fbfaf6" stroke="#caa033" stroke-width="2"/>
+  <path d="M50 48 L50 76" stroke="#caa033" stroke-width="2"/>
+  <path d="M28 56 Q39 52 48 55 M52 55 Q61 52 72 56 M28 64 Q39 60 48 63 M52 63 Q61 60 72 64" stroke="#caa033" stroke-width="1.4" fill="none" opacity=".6"/>
+</svg>`}
+function levelIcon(key,s=22){
+  const m={iniciante:'🌱',medio:'📖',intermediario:'👑',expert:'🛡️'};
+  return `<span style="font-size:${s}px;line-height:1">${m[key]}</span>`;
+}
+function shieldSVG(l,pts){
+  return `<div class="shield">
+    <svg width="170" height="188" viewBox="0 0 170 188">
+      <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4fb96a"/><stop offset="1" stop-color="#2a8c45"/></linearGradient></defs>
+      <path d="M85 6 L160 30 L160 96 Q160 150 85 182 Q10 150 10 96 L10 30 Z" fill="url(#sg)" stroke="#e6c158" stroke-width="5"/>
+      <path d="M85 16 L150 36 L150 96 Q150 142 85 170 Q20 142 20 96 L20 36 Z" fill="none" stroke="#bfe6c8" stroke-width="1.5" opacity=".5"/>
+      <path d="M30 118 q-6 18 6 30 M140 118 q6 18 -6 30" stroke="#e6c158" stroke-width="3" fill="none" opacity=".8"/>
+    </svg>
+    <div class="lab">${l.nome}</div>
+    <div class="small">SUA PONTUAÇÃO</div>
+    <div class="pts">${pts}</div>
+    <div class="ptlab">PONTOS</div>
+  </div>`;
+}
+const bulbSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1.5 2 1.5 3h5c0-1 .5-2 1.5-3a6 6 0 0 0-4-10Z"/></svg>`;
+const skipSVG=`<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 19c0-3 2.5-5 5-5s5 2 5 5M11 19c0-3 2.5-5 5-5s5 2 5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+const clockSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>`;
+const checkSVG=`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#2fa45c" stroke-width="2.4"><circle cx="12" cy="12" r="10" stroke="#2fa45c" opacity=".4"/><path d="M8 12l3 3 5-6"/></svg>`;
+const xSVG=`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e0524d" stroke-width="2.4"><circle cx="12" cy="12" r="10" stroke="#e0524d" opacity=".4"/><path d="M8 8l8 8M16 8l-8 8"/></svg>`;
+const clockBlueSVG=`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#6fa8ff" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>`;
+const homeSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>`;
+const trophySVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M9 20h6M12 14v6"/></svg>`;
+const medalSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="14" r="6"/><path d="M9 3l3 5 3-5M12 11v6M10 14h4" /></svg>`;
+const barSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20V10M12 20V4M19 20v-7M3 20h18"/></svg>`;
+const gearSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M4 12H2M22 12h-2M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>`;
+
+/* ============================================================
+   INÍCIO
+   ============================================================ */
+(async function init(){
+  app.innerHTML='<div class="screen center pad active" style="justify-content:center"><div class="title-quiz" style="font-size:32px">QUIZ</div><div class="title-bib" style="font-size:20px">BÍBLICO</div><p class="small-note">Carregando…</p></div>';
+  await carregarJogadores();
+  normalizeProfiles();
+  screenLogin();
+})();
+</script>
+</body>
+</html>
