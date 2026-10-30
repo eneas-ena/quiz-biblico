@@ -217,6 +217,45 @@ body{
 .mini.del{border-color:rgba(229,90,90,.45);color:#ffb4b4}
 .timeopts{display:flex;gap:8px;flex-wrap:wrap}
 .timeopt.on{background:rgba(57,184,101,.18);border-color:rgba(57,184,101,.5);color:#bff3d0}
+
+/* ---------- versão, atualização ---------- */
+.topo-acoes{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:14px}
+.ver-tag{font-size:11px;color:#8a93b8;letter-spacing:.04em}
+.aviso-versao{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);z-index:99;max-width:420px;margin:0 auto;
+  background:#0b1437;color:#fff;border:1px solid #e6c158;border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font:14px var(--sans);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.aviso-versao button{background:#e6c158;color:#0b1437;font-weight:700;border:none;border-radius:9px;padding:8px 12px;white-space:nowrap;cursor:pointer}
+
+/* ---------- MODO CLARO ---------- */
+html[data-theme=light]{--gold-soft:#8a6a12;--gold:#b08516}
+html[data-theme=light] body{background:#e7e1d1;color:#1c2240}
+html[data-theme=light] #app{color:#1c2240;background:
+  radial-gradient(900px 700px at 50% -10%, #fffaf0 0%, transparent 60%),
+  linear-gradient(180deg,#f6f1e4,#ebe3cf);box-shadow:0 0 40px rgba(0,0,0,.12)}
+html[data-theme=light] .title-quiz{color:#0b1437;text-shadow:none}
+html[data-theme=light] .title-bib{color:#a77f17;text-shadow:none}
+html[data-theme=light] .eyebrow{color:#8a6a12}
+html[data-theme=light] .h2{color:#0b1437}
+html[data-theme=light] .sub,html[data-theme=light] .small-note,html[data-theme=light] .empty,
+html[data-theme=light] .pf small,html[data-theme=light] .row .nm small,html[data-theme=light] .ach small,
+html[data-theme=light] .statbox small,html[data-theme=light] .st small,html[data-theme=light] .progtitle,
+html[data-theme=light] .dotwrap small,html[data-theme=light] .ver-tag,html[data-theme=light] .ring .num span,
+html[data-theme=light] .timerlabel{color:#6c6750}
+html[data-theme=light] .chip,html[data-theme=light] .pf,html[data-theme=light] .row,html[data-theme=light] .ach,
+html[data-theme=light] .statbox,html[data-theme=light] .cfg,html[data-theme=light] .field,html[data-theme=light] .avbtn,
+html[data-theme=light] .btn-dark,html[data-theme=light] .mini,html[data-theme=light] .lifebar,html[data-theme=light] .stats3{
+  background:#fffdf7;border-color:#e2dac4;color:#1c2240}
+html[data-theme=light] .field::placeholder{color:#9a937c}
+html[data-theme=light] .nav{background:rgba(255,253,247,.96);border-top:1px solid #e2dac4}
+html[data-theme=light] .nav button{color:#7a7560}
+html[data-theme=light] .nav button.on{color:#a77f17}
+html[data-theme=light] .qhead .back,html[data-theme=light] .qhead .count,html[data-theme=light] .life{color:#3a4062}
+html[data-theme=light] .qhead .count b{color:#0b1437}
+html[data-theme=light] .qhead .lvlname{color:#1f5fd6}
+html[data-theme=light] .subdone{color:#2a3158}
+html[data-theme=light] .track,html[data-theme=light] .lptrack{background:rgba(0,0,0,.1)}
+html[data-theme=light] .dot{background:#e6dfc9;border-color:#f6f1e4}
+html[data-theme=light] .toggle{background:#cfc7ae}
+html[data-theme=light] .linkbtn{color:#7a5e10}
 </style>
 </head>
 <body>
@@ -236,7 +275,9 @@ body{
    ============================================================ */
 const SUPABASE_URL = "https://ghjbljypxksubmcsvaig.supabase.co";       // ex.: https://xxxxxxxx.supabase.co
 const SUPABASE_KEY = "sb_publishable_qXCYqg1WdmelY9D1mptZXg_U8NdoKby";   // começa com sb_publishable_
-let   ADMIN_PIN    = "3110";                          // <<< TROQUE pela senha do administrador (só você)
+const VERSAO = "2.0.0";
+// A área do administrador usa o e-mail e a senha do Bispo (Supabase).
+// Nenhuma senha fica escrita neste código.
 
 /* ---- armazenamento local (cache offline, com fallback em memória) ---- */
 const mem={};
@@ -249,7 +290,12 @@ const store={
 const _URL = SUPABASE_URL.trim().replace(/\s+/g,'').replace(/\/rest\/v1.*$/i,'').replace(/\/+$/,'');  // remove barra final e /rest/v1 colado por engano
 const _KEY = SUPABASE_KEY.trim();
 const NUVEM_ON = /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(_URL) && _KEY.length>20 && !!(window.supabase);
-const sb = NUVEM_ON ? window.supabase.createClient(_URL, _KEY) : null;
+// Login do administrador NÃO fica guardado: ao sair da área de admin, sai de verdade.
+const sb = NUVEM_ON ? window.supabase.createClient(_URL, _KEY, {
+  auth: { storageKey: "quiz-admin", persistSession: false, autoRefreshToken: true }
+}) : null;
+let adminLogado = false;   // true só enquanto o Bispo está na área de admin
+let tokenJogo = null;      // "crachá" do jogador, dado pelo banco ao acertar o PIN
 
 /* ---- estado em memória ---- */
 let data={profiles:[],lastId:null};
@@ -277,7 +323,7 @@ function rowToProfile(r){return {id:r.id,name:r.nome,avatar:r.avatar,total:r.tot
 async function carregarJogadores(){
   if(sb){
     try{
-      const res=await sb.from('jogadores').select('*').order('total',{ascending:false});
+      const res=await sb.rpc('quiz_lista');
       if(res.error)throw res.error;
       data.profiles=(res.data||[]).map(rowToProfile);
       try{data.lastId=(JSON.parse(store.get('qb_data')||'{}').lastId)||null}catch(e){}
@@ -303,8 +349,17 @@ async function removerJogador(id){
 }
 async function salvarPontos(p){
   salvarCacheLocal();
-  if(sb){try{await sb.from('jogadores').update({total:p.total,per_level:p.perLevel,peak:p.peak}).eq('id',p.id);}
-  catch(e){console.warn('Não consegui salvar na nuvem agora (mantido no aparelho):',e.message);}}
+  if(!sb) return;
+  try{
+    if(adminLogado){
+      const r=await sb.from('jogadores').update({total:p.total,per_level:p.perLevel,peak:p.peak}).eq('id',p.id);
+      if(r.error) throw r.error;
+    } else if(tokenJogo && current && p.id===current.id){
+      const r=await sb.rpc('quiz_salvar',{p_token:tokenJogo,p_total:p.total,p_per_level:p.perLevel,p_peak:p.peak});
+      if(r.error) throw r.error;
+      if(r.data===false) flash('Entre de novo com o seu PIN para salvar os pontos');
+    }
+  }catch(e){console.warn('Não consegui salvar na nuvem agora (mantido no aparelho):',e.message);}
 }
 async function definirPin(p,novoPin){
   const pin_hash=await hashPin(p.name,novoPin);
@@ -804,10 +859,17 @@ function screenLogin(){
       </button>`).join('')}</div>`
     :`<p class="sub" style="margin-top:6px">Nenhum jogador cadastrado ainda.<br>O administrador precisa cadastrar os jogadores.</p>`}
     <button class="linkbtn" id="adminBtn" style="margin-top:18px">⚙ Área do administrador</button>
+    <div class="topo-acoes">
+      <button class="mini" id="temaLogin" aria-label="Mudar tema">${temaAtual()==='escuro'?'☀️':'🌙'}</button>
+      <button class="mini" id="atuLogin" aria-label="Atualizar app">⟳ Atualizar</button>
+      <span class="ver-tag">v${VERSAO}</span>
+    </div>
     <p class="small-note">${NUVEM_ON?'Os pontos ficam salvos na nuvem e valem em qualquer aparelho da família.':'⚠ Nuvem ainda não configurada — rodando só neste aparelho.'}</p>
   </div>`);
   app.querySelectorAll('.pf').forEach(b=>b.onclick=()=>askPin(b.dataset.id));
   document.getElementById('adminBtn').onclick=adminAuth;
+  document.getElementById('temaLogin').onclick=()=>{trocarTema();screenLogin()};
+  document.getElementById('atuLogin').onclick=atualizarApp;
 }
 function askPin(id){
   const p=data.profiles.find(x=>x.id===id);if(!p)return;
@@ -826,7 +888,16 @@ function askPin(id){
     const pin=inp.value.trim();
     if(pin.length<4){flash('Digite os 4 dígitos do PIN');return}
     const h=await hashPin(p.name,pin);
-    if(h===p.pin_hash){enter(p.id);}else{flash('PIN incorreto');inp.value='';inp.focus();}
+    if(!sb){ if(h===p.pin_hash){enter(p.id);}else{flash('PIN incorreto');inp.value='';inp.focus();} return; }
+    // O PIN é conferido no servidor (com limite de tentativas)
+    const r=await sb.rpc('quiz_entrar',{p_id:String(p.id),p_hash:h});
+    if(r.error){
+      if(/BLOQUEADO/.test(r.error.message||'')) flash('Muitas tentativas. Espere 15 minutos.');
+      else flash('Sem conexão. Tente de novo.');
+      inp.value='';inp.focus();return;
+    }
+    if(!r.data){flash('PIN incorreto');inp.value='';inp.focus();return;}
+    tokenJogo=r.data; enter(p.id);
   };
   document.getElementById('ok').onclick=tryEnter;
   inp.onkeydown=e=>{if(e.key==='Enter')tryEnter()};
@@ -837,19 +908,39 @@ function enter(id){current=data.profiles.find(p=>p.id===id);data.lastId=id;decks
    ADMIN — cadastro e gestão dos jogadores (só o administrador)
    ============================================================ */
 function adminAuth(){
+  if(!sb){flash('A área do administrador precisa de internet');return;}
+  let emailSalvo='';try{emailSalvo=localStorage.getItem('bispo-email')||'';}catch(e){}
   show(`
   <div class="screen center pad active">
     <button class="back" id="bk" style="position:absolute;left:14px;top:14px">‹</button>
     <div class="title-quiz" style="font-size:30px;margin-top:30px">ADMIN</div>
-    <div class="eyebrow">SENHA DO ADMINISTRADOR</div>
-    <input class="field pin" id="ap" type="password" inputmode="numeric" maxlength="8" placeholder="senha" autocomplete="off" style="letter-spacing:6px">
-    <button class="btn btn-green" id="ok" style="margin-top:14px">Entrar</button>
+    <div class="eyebrow">E-MAIL E SENHA DO ADMINISTRADOR</div>
+    <form id="admForm" style="width:100%;max-width:300px" autocomplete="on">
+      <input class="field" id="ae" type="email" inputmode="email" autocomplete="username" placeholder="E-mail" value="${esc(emailSalvo)}">
+      <input class="field" id="ap" type="password" autocomplete="current-password" placeholder="Senha" style="margin-top:10px">
+      <button class="btn btn-green" id="ok" type="submit" style="margin-top:14px">Entrar</button>
+    </form>
   </div>`);
-  const inp=document.getElementById('ap');setTimeout(()=>inp.focus(),60);
+  const inp=document.getElementById(emailSalvo?'ap':'ae');setTimeout(()=>inp.focus(),60);
   document.getElementById('bk').onclick=screenLogin;
-  const go=()=>{if(inp.value===String(ADMIN_PIN)){screenAdmin();}else{flash('Senha incorreta');inp.value=''}};
-  document.getElementById('ok').onclick=go;
-  inp.onkeydown=e=>{if(e.key==='Enter')go()};
+  document.getElementById('admForm').onsubmit=async(ev)=>{
+    ev.preventDefault();
+    const email=document.getElementById('ae').value.trim(), senha=document.getElementById('ap').value;
+    if(!email||!senha){flash('Preencha e-mail e senha');return;}
+    const btn=document.getElementById('ok');btn.disabled=true;btn.textContent='Entrando...';
+    const r=await sb.auth.signInWithPassword({email,password:senha});
+    btn.disabled=false;btn.textContent='Entrar';
+    if(r.error){flash(/invalid/i.test(r.error.message||'')?'E-mail ou senha incorretos':'Sem conexão. Tente de novo.');return;}
+    const d=await sb.rpc('eh_dono');
+    if(d.error||d.data!==true){await sb.auth.signOut();flash('Esta conta não é de administrador');return;}
+    try{localStorage.setItem('bispo-email',email);}catch(e){}
+    adminLogado=true;screenAdmin();
+  };
+}
+async function sairAdmin(){
+  adminLogado=false;
+  try{await sb.auth.signOut();}catch(e){}
+  await carregarJogadores();normalizeProfiles();screenLogin();
 }
 function pageShellPlain(inner){show(`<div class="screen active" style="display:flex;flex-direction:column;height:100%"><div style="flex:1;overflow-y:auto" class="pad">${inner}</div></div>`);}
 function screenAdmin(){
@@ -874,10 +965,10 @@ function screenAdmin(){
           <button class="mini del" data-del="${p.id}">Excluir</button>
         </span>
       </div>`).join(''):`<div class="empty">Nenhum jogador ainda. Cadastre o primeiro acima.</div>`}
-    <button class="btn btn-dark" id="voltar" style="margin-top:16px">‹ Voltar ao login</button>
+    <button class="btn btn-dark" id="voltar" style="margin-top:16px">‹ Sair da área do administrador</button>
   `);
   app.querySelectorAll('.timeopt').forEach(b=>b.onclick=()=>{setQTime(b.dataset.t);flash('Tempo definido para '+b.dataset.t+'s');screenAdmin();});
-  document.getElementById('voltar').onclick=screenLogin;
+  document.getElementById('voltar').onclick=sairAdmin;
   document.getElementById('novo').onclick=adminFormNovo;
   app.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{
     const p=data.profiles.find(x=>x.id===b.dataset.del);
@@ -964,7 +1055,7 @@ function screenMenu(){
     ${navBar('jogar')}
   </div>`);
   bindNav();
-  document.getElementById('logout').onclick=()=>{current=null;screenLogin()};
+  document.getElementById('logout').onclick=()=>{sairJogador();screenLogin()};
   app.querySelectorAll('.lvl').forEach(b=>b.onclick=()=>{
     if(b.classList.contains('locked')){flash('Some mais pontos para liberar este nível');return}
     startQuiz(b.dataset.k);
@@ -1249,7 +1340,7 @@ function pageShell(active,inner){
   bindNav();
 }
 async function screenRanking(){
-  if(sb){try{const r=await sb.from('jogadores').select('*').order('total',{ascending:false});if(!r.error){data.profiles=(r.data||[]).map(rowToProfile);normalizeProfiles();if(current)current=data.profiles.find(p=>p.id===current.id)||current;salvarCacheLocal();}}catch(e){}}
+  if(sb){try{const r=await sb.rpc('quiz_lista');if(!r.error){data.profiles=(r.data||[]).map(rowToProfile);normalizeProfiles();if(current)current=data.profiles.find(p=>p.id===current.id)||current;salvarCacheLocal();}}catch(e){}}
   const sorted=data.profiles.slice().sort((a,b)=>b.total-a.total);
   pageShell('ranking',`
     <div class="h2">Ranking da Família</div>
@@ -1306,10 +1397,14 @@ function screenConfig(){
     <div class="cfg"><span>🔊 Sons (em breve)</span><div class="toggle ${sound?'on':''}" id="tgSound"></div></div>
     <div class="cfg" id="resetP" style="cursor:pointer"><span>🔄 Zerar pontos deste jogador</span><span style="color:#9fb0d0">›</span></div>
     <div class="cfg" id="switch" style="cursor:pointer"><span>👥 Trocar de jogador</span><span style="color:#9fb0d0">›</span></div>
-    <p class="small-note">Quiz Bíblico • versão 1.0<br>Feito para a Igreja Vidas 💛</p>
+    <div class="cfg" id="temaCfg" style="cursor:pointer"><span>${temaAtual()==='escuro'?'☀️ Modo claro':'🌙 Modo escuro'}</span><span style="color:#9fb0d0">›</span></div>
+    <div class="cfg" id="atualizarCfg" style="cursor:pointer"><span>⟳ Atualizar app</span><span style="color:#9fb0d0">›</span></div>
+    <p class="small-note">Quiz Bíblico • versão ${VERSAO}<br>Feito para a Igreja Vidas 💛</p>
   `);
   document.getElementById('tgSound').onclick=function(){this.classList.toggle('on');store.set('qb_sound',this.classList.contains('on')?'on':'off')};
-  document.getElementById('switch').onclick=()=>{current=null;screenLogin()};
+  document.getElementById('switch').onclick=()=>{sairJogador();screenLogin()};
+  document.getElementById('temaCfg').onclick=()=>{trocarTema();screenConfig()};
+  document.getElementById('atualizarCfg').onclick=atualizarApp;
   document.getElementById('resetP').onclick=()=>{
     if(confirm('Zerar todos os pontos de '+current.name+'?')){current.total=0;current.perLevel={};current.peak=0;current.history=[];persist();flash('Pontos zerados');screenConfig()}
   };
@@ -1358,6 +1453,45 @@ const trophySVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const medalSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="14" r="6"/><path d="M9 3l3 5 3-5M12 11v6M10 14h4" /></svg>`;
 const barSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20V10M12 20V4M19 20v-7M3 20h18"/></svg>`;
 const gearSVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M4 12H2M22 12h-2M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>`;
+
+/* ============================================================
+   SAIR DO JOGADOR / TEMA / ATUALIZAÇÃO
+   ============================================================ */
+function sairJogador(){
+  if(sb&&tokenJogo){sb.rpc('quiz_sair',{p_token:tokenJogo}).then(()=>{},()=>{});}
+  tokenJogo=null;current=null;
+}
+function temaAtual(){const t=store.get('qb_tema');return t==='claro'?'claro':'escuro';}
+function aplicarTema(){
+  const claro=temaAtual()==='claro';
+  document.documentElement.dataset.theme=claro?'light':'dark';
+  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=claro?'#f4efe2':'#0b1437';
+}
+function trocarTema(){store.set('qb_tema',temaAtual()==='escuro'?'claro':'escuro');aplicarTema();}
+async function atualizarApp(){
+  try{
+    if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.unregister()));}
+    if(window.caches){const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)));}
+  }catch(e){}
+  location.replace(location.pathname+'?v='+Date.now());
+}
+async function verificarVersao(){
+  try{
+    const r=await fetch('index.html?nocache='+Date.now(),{cache:'no-store'});
+    if(!r.ok)return;
+    const m=(await r.text()).match(/const VERSAO = "([^"]+)"/);
+    if(m&&m[1]!==VERSAO&&!document.getElementById('avisoVersao')){
+      const d=document.createElement('div');d.id='avisoVersao';d.className='aviso-versao';
+      d.innerHTML='Nova versão disponível (v'+esc(m[1])+'). <button>Atualizar agora</button>';
+      d.querySelector('button').onclick=atualizarApp;
+      document.body.appendChild(d);
+    }
+  }catch(e){}
+}
+aplicarTema();
+verificarVersao();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)verificarVersao();});
+setInterval(verificarVersao,30*60*1000);
 
 /* ============================================================
    INÍCIO

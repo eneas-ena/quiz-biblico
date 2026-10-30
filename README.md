@@ -11,6 +11,8 @@ Quiz de perguntas bíblicas.
 
 ## Observações
 
+- O PIN de cada jogador é conferido no banco (função `quiz_entrar`), com limite de 5 erros a cada 15 minutos. Ninguém lê a tabela `jogadores` direto.
+- A área do administrador usa o e-mail e a senha do Bispo. As regras estão em `seguranca.sql`.
 - **Atenção:** o projeto Supabase deste app também guarda os dados do KTL. Não apague nem pause esse projeto no Supabase, mesmo que o quiz deixe de ser usado.
 
 ## Como publicar uma nova versão
